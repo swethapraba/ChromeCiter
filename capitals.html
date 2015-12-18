@@ -1,0 +1,450 @@
+<html>
+	<style>
+	body
+	{
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-attachment:fixed;
+	}
+	div.title h1
+	{
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-size:60px;
+		text-align:center;
+		font-variant: small-caps;
+		vertical-align:center;
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+	div.title1 h1
+	{
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-size:60px;
+		text-align:center;
+		font-variant: small-caps;
+		vertical-align:center;
+		margin-top:20px;
+		margin-bottom:20px;
+	}
+
+	div.title h2
+	{
+		color:#FF9900;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-size:45px;
+		text-align:center;
+		font-variant: small-caps;
+		vertical-align:center;
+		margin-top: 20px;
+		margin-bottom:20px;
+	}
+	div.title1 h2
+	{
+		color:#FF9900;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-size:45px;
+		text-align:center;
+		font-variant: small-caps;
+		vertical-align:center;
+		margin-top: 250px;
+		margin-bottom:20px;
+	}
+	
+	div.title1 h3
+	{
+		color:#FF9900;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-size:28px;
+		text-align:center;
+		font-variant: small-caps;
+		vertical-align:center;
+		margin:20px;
+	}
+
+	button.start
+	{
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		border:none;
+		height:48px; 
+		width:75px;
+		font-size: +20; 
+		font-variant: small-caps;
+		margin:auto;
+  		display:block;
+	}
+	button.start:hover
+	{
+		
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		height:48px; 
+		width:75px;
+		font-size: +20;
+		font-variant: small-caps;
+		border: 2px solid white;
+		margin:auto;
+  		display:block;
+	}
+	div.buttons
+	{
+		margin-top: 20px;
+		text-align: center;
+	}
+	button.start1
+	{
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		border:none;
+		height:48px; 
+		width:75px;
+		font-size: +20; 
+		font-variant: small-caps;
+	}
+	button.start1:hover
+	{
+		
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		height:48px; 
+		width:75px;
+		font-size: +20;
+		font-variant: small-caps;
+		border: 2px solid white;
+	}
+	button.start2
+	{
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		border:none;
+		height:48px; 
+		width:75px;
+		font-size: +20; 
+		font-variant: small-caps;
+	}
+	button.start2:hover
+	{
+		
+		background-color:#B20047;
+		color:white;
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		height:48px; 
+		width:75px;
+		font-size: +20;
+		font-variant: small-caps;
+		border: 2px solid white;
+	}
+	input.transbox
+		{
+			border:none;
+			background-color:#B20047; 
+			color:white;
+			width:500px;
+			height:50px;
+			margin:auto;
+  			display:block;
+			font-family: 'Andale Mono', AndaleMono, monospace;
+			font-size: +30;
+			font-variant: small-caps;
+			font-weight: bold;
+			
+		}
+	td.transbox
+	{
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-variant: small-caps;
+		font-weight: bold;
+		font-size: +20;
+		color: white;
+		background-color: #B20047;
+    	opacity: 0.7;
+    	filter: alpha(opacity=70); 
+    	height: 60px;
+    	width: 100px;
+    	text-align:center;
+	}
+	td.transbox1
+	{
+		font-family: 'Andale Mono', AndaleMono, monospace;
+		font-variant: small-caps;
+		font-weight: bold;
+		font-size: +20;
+		color: white;
+		background-color: #FF9900;
+    	opacity: 0.7;
+    	filter: alpha(opacity=70); 
+    	height: 60px;
+    	width: 100px;
+    	text-align:center;
+	}
+	table.transbox2
+	{
+		margin-left:100px;
+		margin-right:100px;
+		margin-bottom: 100px;
+		margin-top: 20px;
+	}
+	</style>
+	<head><title> Game of Capitals </title></head>
+	<body onload = "a()" onclick = "e()" BACKGROUND="ombre-maroon.jpg" id = "body">
+		<script type = 'text/javascript'>
+			var tempStates = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"];
+			var caps = ["Montgomery", "Juno", "Phoenix", "Little Rock", "Sacramento", "Denver", "Hartford", "Dover", "Tallahassee", "Atlanta", "Honolulu", "Boise", "Springfield", "Indianapolis", "Des Moines", "Topeka", "Frankfort", "Baton Rouge", "Augusta", "Annapolis", "Boston", "Lansing", "St. Paul", "Jackson", "Jefferson City", "Helena", "Lincoln", "Carson City", "Concord", "Trenton", "Santa Fe", "Albany", "Raleigh", "Bismarck", "Columbus", "Oklahoma City", "Salem", "Harrisburg", "Providence", "Columbia", "Pierre", "Nashville", "Austin", "Salt Lake City", "Montpelier", "Richmond", "Olympia", "Charleston", "Madison", "Cheyenne"];
+			var capital;
+			var state;
+			var row = 0; 
+			var column = 0;
+			var score = 0; 
+			var current = document.getElementById("body");
+			/*function addListeners()
+			{
+				if(window.addEventListener)
+				{
+					document.getElementById('t').addEventListener('load', random, false);
+				}
+				function random()
+				{
+					alert("hi");
+				}
+			}
+			document.getElementById('t').onload = addListeners();*/
+			function timer() //start button
+			{
+				timeout = window.setTimeout(end, 120000);
+				createTimer("timer1", 120000); 
+				var elemDiv1 = document.getElementById("div1");
+				var elemDiv2 = document.getElementById("div2");
+				var elemDiv3 = document.getElementById("div3");
+				elemDiv1.style.visibility = 'visible'; 
+				elemDiv1.style.display = 'block';
+				elemDiv2.style.visibility = 'visible'; 
+				elemDiv2.style.display = 'block';
+				elemDiv3.style.visibility = 'visible'; 
+				elemDiv3.style.display = 'block';
+				
+				document.getElementById("info").innerHTML = "enter the capital of the given state:" ;
+				
+				var elemB = document.getElementById("s");
+				elemB.style.visibility = 'hidden'; 
+				elemB.style.display = 'none';
+				
+				var elemh2 = document.getElementById("game");
+				elemh2.style.marginTop = "20px";
+				
+				document.getElementById('myText').focus(); //create padding****
+				index = Math.floor(Math.random() * tempStates.length);
+				state = tempStates.splice(index, 1);
+				capital = caps.splice(index, 1);
+				var elemState = document.getElementById('state');
+				elemState.innerHTML = state;
+			}
+			var timer;
+			var totalMSeconds;
+			function createTimer(timerID, time)
+	    	{
+		    	timer = document.getElementById(timerID);
+		    	totalMSeconds = time;
+				updateTimer();
+				window.setTimeout(tick, 1000);
+			}
+			function tick() 
+			{
+				totalMSeconds -= 1000;
+				if(totalMSeconds >= 0)
+				{
+					updateTimer();
+					window.setTimeout(tick, 1000);
+				}
+			}
+
+			function updateTimer() 
+			{
+				var seconds = totalMSeconds;
+				var minutes = Math.floor(seconds / 60000);
+				seconds -= minutes * (60000);
+				seconds = Math.floor(seconds/1000); 
+				var timeStr = leadingZero(minutes) + ":" + leadingZero(seconds);
+				timer.innerHTML = timeStr;
+			}
+			function leadingZero(time)
+	 		{
+				return (time < 10) ? "0" + time : + time;
+			}
+			function showIt()
+			{
+				if(tempStates.length > 0)
+				{
+				var index = Math.floor(Math.random() * tempStates.length);
+				state = tempStates.splice(index, 1);
+				capital = caps.splice(index, 1);
+				var elemState = document.getElementById('state');
+				elemState.innerHTML = state;
+				}
+				else
+				{
+					end();
+				}
+			}
+			function end()
+			{
+				display(false);
+				var y = 0;
+				while(y < tempStates.length)
+				{
+					state = tempStates[y];
+					capital = caps[y];
+					var elemTable = document.getElementById("answered");
+					var row1;
+					if(column > 9)
+					{
+						column = 0;
+						row = parseInt(row) + 1;
+					}
+					if (elemTable.rows["row" + row])
+					{
+						row1 = document.getElementById("row"+row);
+					}
+					else 
+					{
+						row1 = elemTable.insertRow(parseInt(row));
+						row1.id="row"+row;
+					}
+					var cell1 = row1.insertCell(parseInt(column));
+					cell1.className = "transbox1";
+					column = parseInt(column) + 1;
+					cell1.innerHTML = state + "<br>" + capital;
+					y = y + 1;
+				}
+				var elemB = document.getElementById("div1");
+				elemB.style.visibility = 'hidden'; 
+				elemB.style.display = 'none';
+				
+				var elemI = document.getElementById("info");
+				elemI.style.visibility = 'hidden'; 
+				elemI.style.display = 'none';
+				
+				var elemB = document.getElementById("div3");
+				elemB.style.visibility = 'hidden'; 
+				elemB.style.display = 'none';
+				
+				var elemB = document.getElementById("p");
+				elemB.style.visibility = 'visible'; 
+				elemB.style.display = 'block';
+				
+				var elemScore = document.getElementById("finalScore");
+				elemScore.style.visibility = 'visible'; 
+				elemScore.style.display = 'block';
+				elemScore.innerHTML = "your final score: " + score;
+				
+			}
+			function check()
+			{
+				var elemText = document.getElementById('myText');
+				capital = String(capital);
+				if(elemText.value.toLowerCase() === capital.toLowerCase())
+				{
+					display(true);
+					score = score + 1;
+					var elemScore = document.getElementById('score');
+					elemScore.innerHTML = "score: " + score;
+					showIt();
+					elemText.value = "";
+					elemText.form.reset();
+
+				}
+			}
+			function display(x)
+			{
+				var elemTable = document.getElementById("answered");
+				var row1;
+				if(column > 9)
+				{
+					column = 0;
+					row = parseInt(row) + 1;
+				}
+				if (elemTable.rows["row" + row])
+				{
+					row1 = document.getElementById("row"+row);
+				}
+				else 
+				{
+					row1 = elemTable.insertRow(parseInt(row));
+					row1.id="row"+row;
+				}
+				var cell1 = row1.insertCell(parseInt(column));
+				if(x)
+				{
+					cell1.className = "transbox";
+				}
+				else
+				{
+					cell1.className = "transbox1";
+				}
+				column = parseInt(column) + 1;
+				cell1.innerHTML = state + "<br>" + capital;
+			}
+			function skip()
+			{
+				if(tempStates.length >= 1)
+				{
+				display(false);
+				document.getElementById("myText").focus();
+				showIt();
+				document.getElementById("myText").value = "";
+				document.getElementById("myText").form.reset();
+				}
+				else
+				{
+					end();
+				}
+			}
+			function a()
+			{
+				alert("hi");
+			}
+			function e()
+			{
+				var temp = window.event.srcElement;
+				temp.style.border = "2px solid blue";
+				current.style.border = "none";
+				current = temp;
+        		
+			}
+				
+		</script>
+					<div class = 'title1'>
+						<h2 id = "game"> game of</h2> 
+						<h1> CAPITALS </h1> 
+						<h3 id = "info"> can you name all the U.S. capitals in 2 minutes? </h3>
+					</div>
+					<div class = 'title'> 
+						<button style = "visibility:hidden; display:none" class = "start" face = "arial" type = 'button' id = 'p' accesskey = 's' onClick = "window.location.href='capitals.html'"><u>p</u>lay again </button>
+						<button class = "start" face = "arial" type = 'button' id = 's' accesskey = 's' onClick = "timer()"><u>s</u>tart </button>
+						<h2 id = "finalScore"></h2>
+					</div>
+					<div class = 'title' style = "visibility:hidden; display:none" id = "div1" >
+						<h2 id = 'state'> state </h2> 
+						<input class = "transbox" type = 'text' name = 'myText' id = 'myText' oninput="check()">
+						<div class = "buttons">
+							<button class = "start2" face = "arial" type = 'button' id = 'e' accesskey = 'e' onClick = "check()"><u>e</u>nter </button>
+							<button class = "start1" face = "arial" type = 'button' id = 'i' accesskey = 'k' onClick = "skip()">s<u>k</u>ip </button>
+						</div>
+					</div>
+					<div class = 'title' style = "visibility:hidden; display:none" id = 'div3'> 
+						<h2 align = "center" id = "timer1"> Timer </h2>
+						<h2 id = "score"> score: 0</h2> 
+					</div> 
+					<div class = 'title' id = "div2" align="center">
+						<table id = 'answered' class = 'transbox2' > 
+						</table>
+					</div>
+	</body>
+</html>
