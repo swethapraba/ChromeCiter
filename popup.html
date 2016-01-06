@@ -1,0 +1,36 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Citation Generator</title>
+    <link rel="stylesheet" type="text/css" href="a.css"/>
+  </head>
+  <body>
+    <div id="masthead">
+      Citation Generator
+    </div>
+    <div id="contentBox">
+      <div id="title">
+        Current Page
+      </div>
+      <div id="label">
+        Credibility Score: <b id="relScore">--</b>/10
+      </div>
+      <div id="cite" contenteditable>
+        Generating Citation...
+      </div>
+      <div id="cta">
+        Like Apogee? <a target="_blank" href="https://chrome.google.com/webstore/detail/apogee-citation-creator/biijohdchaffibidhjpipilbdidnpmkm/reviews">Leave us a review</a>! It helps us reach more people like you who need it!
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
