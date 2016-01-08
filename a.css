@@ -1,329 +1,54 @@
-
-File
-New File...
-Alt+N
-+New Connection
-Container
-GitHub
-Bitbucket
-Git from URL
-FTP Server
-SSH Server
-Dropbox
-Google Drive
-Amazon S3
-New Project...
-Save
-Ctrl+S
-Save As
-Ctrl+Shift+S
-Save All
-Ctrl+Alt+S
-Save with Encoding...
-Reopen With Encoding...
-Clone
-Rename
-Upload
-Refresh
-Share
-Delete
-Remove
-Close All Tabs
-Edit
-Undo
-Ctrl+Z
-Redo
-Ctrl+Y Ctrl+Shift+Z
-Undo Selection
-Ctrl+U
-Beautify
-Ctrl+B
-Show Completions
-Ctrl+Space
-Toggle Comment
-Ctrl+/
-+Line
-Unindent
-Indent
-Duplicate Line
-Shift+Ctrl+D
-Swap Line Up
-Ctrl+Up
-Swap Line Down
-Ctrl+Down
-+Code Folding
-Fold
-Alt+Up
-Unfold
-Alt+Down
-Fold All
-Alt+Shift+Up
-Unfold All
-Alt+Shift+Down
-+Convert Case
-To Upper Case
-Ctrl+K ctrl+U
-To Lower Case
-Ctrl+K ctrl+L
-Find
-Find...
-Ctrl+F
-Find Next
-F3
-Find Previous
-Replace...
-Ctrl+R
-Replace Next
-Replace All
-Goto
-Goto Anything...
-Ctrl+P
-Goto Commands
-Ctrl+Shift+P
-Goto Line
-Ctrl+G
-View
-+Layout
-Single
-Alt+Shift+1
-Columns: 2
-Alt+Shift+2
-Columns: 3
-Alt+Shift+3
-Columns: 4
-Alt+Shift+4
-Rows: 2
-Alt+Shift+8
-Rows: 3
-Alt+Shift+9
-Grid
-Alt+Shift+5
-Split Vertical
-Split Horizontal
-Close Panel
-✓File Explorer
-Alt+X
-Checkboxes
-Enable Double Click
-Increase Font Size
-Shift+Ctrl+Alt+Up
-Decrease Font Size
-Shift+Ctrl+Alt+Down
-Reset Font Size
-Indent With Tabs
-✓Auto-detect Indentation
-Wrap Lines
-Alt+Q
-✓Errors or Warnings
-✓Line Numbers
-✓Fold Icons
-Autosave
-✓MiniMap
-File Revisions
-Show Hidden Files
-Preferences
-+Default
-General
-Key Bindings
-FileTypes
-Linting
-+User
-General
-Key Bindings
-FileTypes
-Linting
-+Project
-General
-Key Bindings
-FileTypes
-Linting
-Help
-Changelog
-Documentation
-Create a Support Ticket
-Suggest a Feature
-Terms of Service
-Privacy Policy
-1.ABC PicturesAPCSBharatanatyama.cssicon.pngmanifest.jsonpopup.htmlpopup.jsChromeExtensionCodePlusPlus Camp FlyersMom's StuffPersonal Tech ProjectsPhysics 2014-15PushToTJSimpleDraggingSimpleDragging 2Swetha_Deepa1.FinishedLabshelloworldphp.phpindex.htmlindex.phppersonalSite.csspersonalSite.htmlWeb-Application-Development10271373_707735335967236_2159862344584717645_o.jpgadmissionTicketJanSAT.pdfCalculus_Cheat_Sheet_All.pdfCamp.jpgClassroom.jpgGroup Photo.jpginclassdotsize.htmlM31.pdfNovember 2012 BEMS Falling For The Story Newsletter.pdfPrepScholar_SAT_Practice_Tests.pdfrandom.htmlRevolutionary Identity FINAl.docxRevolutionary Identity.docxsample-proposal.pdfSwetha Scratch Resume.docxSwethaPrabakaranChampionOfChange.docxSwethaPrabakaranSEAPTranscript.pdfversion2.htmlWhich Programming Language Carlcheo.pngxkcd.pngPersonal Gmail Dropbox
-Default
-popup.html
-popup.js
-a.css
-
--
-1
 /* CSS copyright Linus Lee, Polyx Studio */
-2
-​
-3
+
 html,body,div,p{margin:0;padding:0}h1,h2{font-weight:normal}img{border:0}
-4
 body{
-5
     font-family:"Helvetica Neue","Arial",sans-serif;
-6
     width:250px;
-7
     height:auto;
-8
     background-color:#dfdfdf;
-9
     overflow:hidden;
-10
     padding:10px;
-11
 }
-12
 #masthead{
-13
     text-align:center;
-14
     font-size:1.3em;
-15
     margin-bottom:10px;
-16
     color:green;
-17
 }
-18
 #masthead>img{
-19
     height:22px;
-20
 }
-21
 #contentBox>div{
-22
     background:white;
-23
     margin-bottom:7px;
-24
     padding:6px;
-25
     box-shadow:0 2px 6px rgba(0,0,0,0.4);
-26
     border-radius:3px;
-27
 }
-28
-#title{↔}
-31
-#label{↔}
-36
-#cite{↔}
-41
+#title{
+    font-weight:bold;
+}
+#label{
+    color:#777777;
+    font-style:italic;
+    display:none;
+}
+#cite{
+    color:#444444;
+    line-height:1.5em;
+    word-wrap:break-word;
+}
 #cite:focus{outline:none}
-42
 #cta{display:none}
-43
 #pref_open{
-44
     position:absolute;
-45
     right:15px;
-46
     top:10px;
-47
     opacity:0.25;
-48
     cursor:pointer;
-49
 }
-50
 #pref_open:hover{opacity:0.45}
-51
-​
-52
-#autoCite{
-53
-        background-color:#990066;
-54
-        color:white;
-55
-        font-family:"Helvetica Neue","Arial",sans-serif;
-56
-        /*border:none;
-57
-        height:20px; 
-58
-        width:75px;
-59
-  margin:auto;
-60
-        display:block;*/
-61
-        font-size: +20; 
-62
-        font-variant: small-caps;
-63
-        
-64
-    
-65
-}
-66
-#insertCite{
-67
-        background-color:#990066;
-68
-        color:white;
-69
-        font-family:"Helvetica Neue","Arial",sans-serif;
-70
-       /* border:none;
-71
-        height:20px; 
-72
-        width:75px; 
-73
-   margin:auto;
-74
-        display:block;*/
-75
-        font-size: +20; 
-76
-        font-variant: small-caps;
-77
-       
-78
-    
-79
-}
 
-/* CSS copyright Linus Lee, Polyx Studio */
-​
-html,body,div,p{margin:0;padding:0}h1,h2{font-weight:normal}img{border:0}
-body{↔}
-#masthead{
-    text-align:center;
-    font-size:1.3em;
-    margin-bottom:10px;
-    color:green;
-}
-#masthead>img{
-    height:22px;
-}
-#contentBox>div{
-    background:white;
-    margin-bottom:7px;
-    padding:6px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.4);
-    border-radius:3px;
-}
-#title{↔}
-#label{↔}
-#cite{↔}
-#cite:focus{outline:none}
-#cta{display:none}
-#pref_open{
-    position:absolute;
-    right:15px;
-    top:10px;
-    opacity:0.25;
-    cursor:pointer;
-}
-#pref_open:hover{opacity:0.45}
-​
 #autoCite{
         background-color:#990066;
         color:white;
@@ -352,13 +77,3 @@ body{↔}
        
     
 }
-Personal Gmail DropboxChromeExtensiona.css5:1
-Spaces: 2
-CSS
-Current file
-Revision
-Revisions
-
-CLOSE
-
-REFRESH
