@@ -4,18 +4,23 @@
  "browser_action" field in manifest.json contains the "default_popup" key with
  value "popup.html".
  -->
-
-
-<!DOCTYPE html>
 <html>
   <head>
     <title>Citation Generator</title>
     <link rel="stylesheet" type="text/css" href="a.css"/>
+    <script src="popup.js"></script>
   </head>
   <body>
-    <div id="masthead">
-      Citation Generator
-    </div>
+<body>
+ <div id="masthead"> Citation Generator </div>
+ <span id="newCitation">
+   <button type = "button" id = "autoCite" onclick = "autoCite()">
+      Cite This Page!
+   </button>
+   <button type = "button" id = "insertCite"onclick = "insertCite()">
+     Insert Citation
+   </button>
+  </span>  
     <div id="contentBox">
       <div id="title">
         Current Page
@@ -27,10 +32,23 @@
         Generating Citation...
       </div>
       <div id="cta">
-        Like Apogee? <a target="_blank" href="https://chrome.google.com/webstore/detail/apogee-citation-creator/biijohdchaffibidhjpipilbdidnpmkm/reviews">Leave us a review</a>! It helps us reach more people like you who need it!
+        Like Apogee? <a target="_blank" href="https://google.com">Leave us a review</a>! It helps us reach more people like you who need it!
       </div>
     </div>
-    <script src="popup.js"></script>
   </body>
 </html>
 
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+ #status {
+        /* avoid an excessively wide status text */
+        white-space: pre;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
+      }
+    <div id="status"></div>
+    <img id="image-result">
+     -->
