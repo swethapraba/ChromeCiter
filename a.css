@@ -13,7 +13,8 @@ body{
     text-align:center;
     font-size:1.3em;
     margin-bottom:10px;
-    color:green;
+    font-variant: small-caps;
+    color:#990066;
 }
 #masthead>img{
     height:22px;
@@ -32,6 +33,20 @@ body{
     color:#777777;
     font-style:italic;
     display:none;
+}
+button.start
+    {
+        background-color:#990066;
+        color:white;
+        font-family:"Helvetica Neue","Arial",sans-serif;
+        border:none;
+        height:20px; 
+        width:75px;
+        font-size: +20; 
+        font-variant: small-caps;
+        margin:auto;
+        display:block;
+    }
 }
 #cite{
     color:#444444;
