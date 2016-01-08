@@ -63,43 +63,32 @@ function citeUrl(searchTerm, callback, errorCallback)
   callBack(url);
 }
 
-function renderStatus(statusText) {
-  document.getElementById('title').textContent = statusText;
-}
-
-document.addEventListener('DOMContentLoaded', 
-function() 
+function renderStatus(statusText) { document.getElementById('title').textContent = statusText;}
+document.addEventListener('DOMContentLoaded', function() 
 {
-    getCurrentTabUrl(
-      function(values) 
-      {
-        url = values[0]
-        alert(url)
-        // Put the image URL in Google search.
-        renderStatus('Citing ' + url);
-
-        citeUrl(url, 
-          function(citation) 
-          {
-
-            //renderStatus('Citing: ' + url);
-            var result = document.getElementById('cite');
-            result.innerHTML = citation;
-      // Explicitly set the width/height to minimize the number of reflows. For
-      // a single image, this does not matter, but if you're going to embed
-      // multiple external images in your page, then the absence of width/height
-      // attributes causes the popup to resize multiple times.
-            // imageResult.width = width;
-            // imageResult.height = height;
-            // imageResult.src = imageUrl;
-            // imageResult.hidden = false;
-
-          }, 
-          function(errorMessage) 
-          {
-            renderStatus('Cannot display image. ' + errorMessage);
-          }
-        );
-      }
-    );
+  document.getElementById("autoCite").addEventListener("click", autoCiteMe);
+  document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
 });
+
+  function autoCiteMe()
+{
+  alert("citing this page");
+   getCurrentTabUrl(function(values) 
+    {
+      url = values[0]
+      alert(url)
+      renderStatus('Citing ' + url);
+      citeUrl(url, function(citation) 
+      {
+        //renderStatus('Citing: ' + url);
+        var result = document.getElementById('cite');
+        result.innerHTML = citation;
+      }, function(errorMessage) { renderStatus('Cannot display image. ' + errorMessage);} );
+      
+      
+    });
+}
+function insertCiteMe()
+{
+  alert("here is the form");
+}
