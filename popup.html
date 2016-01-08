@@ -1,5 +1,10 @@
 <!doctype html>
-<!-- This page is shown when the extension button is clicked, because the "browser_action" field in manifest.json contains the "default_popup" key with value "popup.html".-->
+<!-- This page is shown when the extension button is clicked, because the "browser_action" field in manifest.json contains the "default_popup" key with value "popup.html".\
+ method = "post" action = "10.FirstformCode.php"
+        <option> Research Database
+        <option> Journal
+        <option> Book
+-->
 <html>
   <head>
     <title>Citation Generator</title>
@@ -17,6 +22,17 @@
      Insert Citation
    </button>
   </span>  
+ <div id ="citeForm">
+    <form name = "myForm">
+      <select size = "1" name = "resource">
+        <option selected> Website
+      </select> <br>
+      Author: <input type = "text" name = "firstName" placeholder = "First" autofocus = "autofocus"> <input type = "text" name = "middleName" placeholder = "Middle"> <input type = "text" name = "lastName" placeholder = "Last"><br>
+      Site Name <input type = "text" name = "siteTitle" placeholder = "Researchapedia"> <br>
+      Published On: <input type = "text" name = "published" placeholder = "00/00/0000"> <br>
+      <button type = "submit" id = "saveCitation"> <U>S</U>ave My Citation </button>
+    </form>
+  </div>
     <div id="contentBox">
       <div id="title">
         Current Page
