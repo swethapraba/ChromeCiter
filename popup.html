@@ -28,10 +28,11 @@
 
  <div id ="citeForm" style = 'text-align:center; visibility:hidden; display:none'>
     <form name = "myForm">
-      <select size = "1" name = "resource">
+      <select size = "1" name = "resource" class = "dropdown">
         <option selected> APA
         <option> MLA
       </select> 
+
       <br>
       article title
       <br>
@@ -59,12 +60,14 @@
   </div>
 
   <div id="contentBox">
-    <div id="title" style = "visibility:hidden; display:none; margin-top:8px">
-        Current Page
-    </div>
-    <div id="cite" contenteditable style = "visibility:hidden; display:none" class = "citation">
-        Generating Citation...
-    </div>
+    <table id = 'answered' class = 'transbox2' > 
+      <div id="title" style = "visibility:hidden; display:none; margin-top:8px">
+          Current Page
+      </div>
+      <div id="cite" contenteditable style = "visibility:hidden; display:none" class = "citation">
+          Generating Citation...
+      </div>
+    </table>
   </div>
 
   </body>

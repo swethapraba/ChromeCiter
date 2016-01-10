@@ -174,4 +174,23 @@ button.start
     top:1px;
 }
 
+.dropdown
+{
+    -webkit-appearance: none;  /*REMOVES DEFAULT CHROME & SAFARI STYLE*/
+    -moz-appearance: none;  /*REMOVES DEFAULT FIREFOX STYLE*/
+    border: 0 !important;
+    background-color: #993366;
+    color: #fff;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 18px;
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    text-align: center;
+    background: #993366 url(dropdownArrow.png) no-repeat right center;
+    background-size: 30px 25px; /*TO ACCOUNT FOR @2X IMAGE FOR RETINA */
+}
+
 
