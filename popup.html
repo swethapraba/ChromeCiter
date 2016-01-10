@@ -7,44 +7,43 @@
 -->
 <html>
   <head>
-    <title>Citation Generator</title>
+    <title>CiteMe</title>
     <link rel="stylesheet" type="text/css" href="a.css"/>
     <script src="popup.js"></script>
   </head>
   <body>
 <body>
- <div id="masthead"> Citation Generator </div>
- <span id="newCitation">
-   <button type = "button" id = "autoCite">
-      Cite This Page!
+ <div id="masthead"> CiteMe </div>
+ <div id="newCitation" style = 'text-align:center'>
+   <button type = "button" id = "autoCite" class = 'myButton'>
+      cite this page
    </button>
-   <button type = "button" id = "insertCite">
-     Insert Citation
+   <br>
+   <br>
+   <button type = "button" id = "insertCite" class = 'myButton'>
+     insert citation
    </button>
-  </span>  
- <div id ="citeForm">
+  </div>  
+
+ <div id ="citeForm" style = 'text-align:center; visibility:hidden; display:none'>
     <form name = "myForm">
       <select size = "1" name = "resource">
         <option selected> Website
       </select> <br>
-      Author: <input type = "text" name = "firstName" placeholder = "First" autofocus = "autofocus"> <input type = "text" name = "middleName" placeholder = "Middle"> <input type = "text" name = "lastName" placeholder = "Last"><br>
-      Site Name <input type = "text" name = "siteTitle" placeholder = "Researchapedia"> <br>
-      Published On: <input type = "text" name = "published" placeholder = "00/00/0000"> <br>
-      <button type = "submit" id = "saveCitation"> <U>S</U>ave My Citation </button>
+      <input type = "text" class = "transbox" name = "firstName" placeholder = "Author First Name" autofocus = "autofocus"> 
+      <input type = "text" class = "transbox" name = "middleName" placeholder = "Author Middle Name"> 
+      <input type = "text" class = "transbox" name = "lastName" placeholder = "Author Last Name"><br>
+      <input type = "text" class = "transbox" name = "siteTitle" placeholder = "Site Name"> <br>
+      <input type = "text" class = "transbox" name = "published" placeholder = "Date of Publication"> <br>
+      <button class = "start" type = "submit" id = "saveCitation"> <U>S</U>ave My Citation </button>
     </form>
   </div>
     <div id="contentBox">
-      <div id="title">
+      <div id="title" style = "visibility:hidden; display:none">
         Current Page
       </div>
-      <div id="label">
-        Credibility Score: <b id="relScore">--</b>/10
-      </div>
-      <div id="cite" contenteditable>
+      <div id="cite" contenteditable style = "visibility:hidden; display:none">
         Generating Citation...
-      </div>
-      <div id="cta">
-        Like Apogee? <a target="_blank" href="https://google.com">Leave us a review</a>! It helps us reach more people like you who need it!
       </div>
     </div>
   </body>

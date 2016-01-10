@@ -59,34 +59,57 @@ function citeUrl(searchTerm, callback, errorCallback)
 {
   var url = searchTerm[0];
   var title = searchTerm[1];
-  alert(url);
-  callBack(url);
+  callback(searchTerm);
 }
 
-function renderStatus(statusText) { document.getElementById('title').textContent = statusText;}
+function renderStatus(statusText) 
+{ 
+  var render = document.getElementById('title')
+  render.style.visibility = 'visible'; 
+  render.style.display = 'block';
+  render.textContent = statusText;
+}
+//main
 document.addEventListener('DOMContentLoaded', function() 
-{
-  document.getElementById("autoCite").addEventListener("click", autoCiteMe);
-  document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
-});
+  {
+    document.getElementById("autoCite").addEventListener("click", autoCiteMe);
+    document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
+  }
+);
 
-  function autoCiteMe()
+function autoCiteMe()
 {
-  alert("citing this page");
+  var buttons = document.getElementById("newCitation");
+  buttons.style.visibility = 'hidden';
+  buttons.style.display = 'none';
+
+  var forms = document.getElementById("citeForm");
+  forms.style.visibility = 'visible';
+  forms.style.display = 'block';
+  //alert("citing this page");
    getCurrentTabUrl(function(values) 
     {
-      url = values[0]
-      alert(url)
-      renderStatus('Citing ' + url);
-      citeUrl(url, function(citation) 
-      {
-        //renderStatus('Citing: ' + url);
-        var result = document.getElementById('cite');
-        result.innerHTML = citation;
-      }, function(errorMessage) { renderStatus('Cannot display image. ' + errorMessage);} );
+        url = values[0]
+        renderStatus('Citing ' + url);
+
+        citeUrl(values, 
+          function(citation) 
+          {
+            //renderStatus('Citing: ' + url);
+            var result = document.getElementById('cite');
+            result.style.visibility = 'visible'; 
+            result.style.display = 'block';
+            result.innerHTML = citation[0];
+            renderStatus(citation[1]);
+          }, 
+          function(errorMessage) 
+          {
+            renderStatus('Cannot display image. ' + errorMessage);
+          }
+        );
       
-      
-    });
+    }
+   );
 }
 function insertCiteMe()
 {

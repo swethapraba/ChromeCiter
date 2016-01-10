@@ -2,7 +2,7 @@
 
 html,body,div,p{margin:0;padding:0}h1,h2{font-weight:normal}img{border:0}
 body{
-    font-family:"Helvetica Neue","Arial",sans-serif;
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     width:250px;
     height:auto;
     background-color:#dfdfdf;
@@ -10,10 +10,15 @@ body{
     padding:10px;
 }
 #masthead{
+
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-size: 31px;
+    font-variant: small-caps;
+    line-height: 34.1px;
     text-align:center;
-    font-size:1.3em;
+    /*font-size:1.3em;*/
     margin-bottom:10px;
-    color:green;
+    color:#990066;
 }
 #masthead>img{
     height:22px;
@@ -49,26 +54,52 @@ body{
 }
 #pref_open:hover{opacity:0.45}
 
-#autoCite{
-        background-color:#990066;
+input.transbox
+        {
+            border:none;
+            background-color:#990066; 
+            color:white;
+            margin:auto;
+            display:block;
+            font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+            font-size: +30;
+            font-variant: small-caps;
+            opacity: 0.7;
+            filter: alpha(opacity=70); 
+        }
+
+button.start
+{
+    background-color:#990066;
         color:white;
-        font-family:"Helvetica Neue","Arial",sans-serif;
-        /*border:none;
-        height:20px; 
+        font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+        border:none;
+        /*height:20px; 
         width:75px;
   margin:auto;
         display:block;*/
         font-size: +20; 
         font-variant: small-caps;
-        
-    
 }
-#insertCite{
+.autoCite{
         background-color:#990066;
         color:white;
-        font-family:"Helvetica Neue","Arial",sans-serif;
-       /* border:none;
-        height:20px; 
+        font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+        border:none;
+        /*height:20px; 
+        width:75px;
+  margin:auto;
+        display:block;*/
+        font-size: +20; 
+        font-variant: small-caps;
+            
+}
+.insertCite{
+        background-color:#990066;
+        color:white;
+       font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+       border:none;
+        /*height:20px; 
         width:75px; 
    margin:auto;
         display:block;*/
@@ -77,3 +108,32 @@ body{
        
     
 }
+
+.myButton {
+    -moz-box-shadow: 0px 10px 14px -7px #276873;
+    -webkit-box-shadow: 0px 10px 14px -7px #276873;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background-color:#990066;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-variant: small-caps;
+    font-size:20px;
+    height: 40px;
+    width: 200px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+.myButton:hover {
+    background-color:#993366;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
