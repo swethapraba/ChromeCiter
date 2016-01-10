@@ -86,7 +86,26 @@ function autoCiteMe()
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'visible';
   forms.style.display = 'block';
+
+  document.getElementById("saveCitation").addEventListener("click", display);
   //alert("citing this page");
+  
+}
+function insertCiteMe()
+{
+  alert("here is the form");
+}
+
+function display()
+{
+  var forms = document.getElementById("citeForm");
+  forms.style.visibility = 'hidden';
+  forms.style.display = 'none';
+
+  var buttons = document.getElementById("newCitation");
+  buttons.style.visibility = 'visible';
+  buttons.style.display = 'block';
+
    getCurrentTabUrl(function(values) 
     {
         url = values[0]
@@ -110,8 +129,4 @@ function autoCiteMe()
       
     }
    );
-}
-function insertCiteMe()
-{
-  alert("here is the form");
 }

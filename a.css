@@ -3,6 +3,8 @@
 html,body,div,p{margin:0;padding:0}h1,h2{font-weight:normal}img{border:0}
 body{
     font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-variant: small-caps;
+    font-size: 20px;
     width:250px;
     height:auto;
     background-color:#dfdfdf;
@@ -56,16 +58,21 @@ body{
 
 input.transbox
         {
-            border:none;
+            border: none;
+            border-bottom: solid 2px #660033;
+            transition: border 0.3s;
             background-color:#990066; 
             color:white;
             margin:auto;
+            margin-top: 5px;
             display:block;
             font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
             font-size: +30;
             font-variant: small-caps;
-            opacity: 0.7;
-            filter: alpha(opacity=70); 
+            opacity: 0.6;
+            filter: alpha(opacity=60); 
+            width:175px;
+            height: 20px;
         }
 
 button.start
@@ -104,11 +111,15 @@ button.start
    margin:auto;
         display:block;*/
         font-size: +20; 
-        font-variant: small-caps;
-       
-    
+        font-variant: small-caps; 
 }
 
+.citation
+{
+    font-family:"Helvetica Neue","Arial",sans-serif;
+    font-variant:normal;
+    font-size: 13px;
+}
 .myButton {
     -moz-box-shadow: 0px 10px 14px -7px #276873;
     -webkit-box-shadow: 0px 10px 14px -7px #276873;
@@ -132,6 +143,33 @@ button.start
     background-color:#993366;
 }
 .myButton:active {
+    position:relative;
+    top:1px;
+}
+
+.cont {
+    -moz-box-shadow: 0px 10px 14px -7px #276873;
+    -webkit-box-shadow: 0px 10px 14px -7px #276873;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background-color:#990066;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-variant: small-caps;
+    font-size:12px;
+    height: 30px;
+    width: 125px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+.cont:hover {
+    background-color:#993366;
+}
+.cont:active {
     position:relative;
     top:1px;
 }

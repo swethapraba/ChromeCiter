@@ -23,26 +23,45 @@
    <button type = "button" id = "insertCite" class = 'myButton'>
      insert citation
    </button>
+   <br>
   </div>  
 
  <div id ="citeForm" style = 'text-align:center; visibility:hidden; display:none'>
     <form name = "myForm">
       <select size = "1" name = "resource">
-        <option selected> Website
-      </select> <br>
-      <input type = "text" class = "transbox" name = "firstName" placeholder = "Author First Name" autofocus = "autofocus"> 
-      <input type = "text" class = "transbox" name = "middleName" placeholder = "Author Middle Name"> 
-      <input type = "text" class = "transbox" name = "lastName" placeholder = "Author Last Name"><br>
-      <input type = "text" class = "transbox" name = "siteTitle" placeholder = "Site Name"> <br>
-      <input type = "text" class = "transbox" name = "published" placeholder = "Date of Publication"> <br>
-      <button class = "start" type = "submit" id = "saveCitation"> <U>S</U>ave My Citation </button>
+        <option selected> APA
+        <option> MLA
+      </select> 
+      <br>
+      article title
+      <br>
+      <input type = "text" class = "transbox" name = "siteTitle" placeholder = "Site Name" autofocus = "autofocus"> 
+      contributor name(s)
+      <input type = "text" class = "transbox" name = "firstName" placeholder = "First Name"> 
+      <input type = "text" class = "transbox" name = "lastName" placeholder = "Last Name">
+      <button class = 'cont' type = "button" id = "contributor"> <U>+</U> add a contributor </button>
+      <br>
+      website tite
+      <br>
+      <input type = "text" class = "transbox" name = "wtitle" placeholder = "Website Title">
+      publisher
+      <br>
+      <input type = "text" class = "transbox" name = "published" placeholder = "Publisher"> 
+      published date
+      <br>
+      <input type = "text" class = "transbox" name = "pdate" placeholder = "Date of Publication">
+      date accessed
+      <br>
+      <input type = "text" class = "transbox" name = "date" placeholder = "Date Accessed"> 
+      <br>
+      <button class = 'myButton' type = "button" id = "saveCitation"> <U>s</U>ave my citation </button>
     </form>
   </div>
     <div id="contentBox">
-      <div id="title" style = "visibility:hidden; display:none">
+      <div id="title" style = "visibility:hidden; display:none; margin-top:8px">
         Current Page
       </div>
-      <div id="cite" contenteditable style = "visibility:hidden; display:none">
+      <div id="cite" contenteditable style = "visibility:hidden; display:none" class = "citation">
         Generating Citation...
       </div>
     </div>
