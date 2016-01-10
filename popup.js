@@ -83,6 +83,14 @@ function autoCiteMe()
   buttons.style.visibility = 'hidden';
   buttons.style.display = 'none';
 
+  var render = document.getElementById('title')
+  render.style.visibility = 'hidden'; 
+  render.style.display = 'none';
+
+  var result = document.getElementById('cite');
+  result.style.visibility = 'hidden'; 
+  result.style.display = 'none';
+
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'visible';
   forms.style.display = 'block';
@@ -93,7 +101,23 @@ function autoCiteMe()
 }
 function insertCiteMe()
 {
-  alert("here is the form");
+   var buttons = document.getElementById("newCitation");
+  buttons.style.visibility = 'hidden';
+  buttons.style.display = 'none';
+
+  var render = document.getElementById('title')
+  render.style.visibility = 'hidden'; 
+  render.style.display = 'none';
+
+  var result = document.getElementById('cite');
+  result.style.visibility = 'hidden'; 
+  result.style.display = 'none';
+
+  var forms = document.getElementById("citeForm");
+  forms.style.visibility = 'visible';
+  forms.style.display = 'block';
+
+  document.getElementById("saveCitation").addEventListener("click", display);
 }
 
 function display()
