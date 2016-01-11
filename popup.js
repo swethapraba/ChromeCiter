@@ -95,6 +95,7 @@ function autoCiteMe()
   forms.style.visibility = 'visible';
   forms.style.display = 'block';
 
+  document.getElementById("contributor").addEventListener("click", addContributor);
   document.getElementById("saveCitation").addEventListener("click", display);
   //alert("citing this page");
   
@@ -117,7 +118,15 @@ function insertCiteMe()
   forms.style.visibility = 'visible';
   forms.style.display = 'block';
 
+  document.getElementById("contributor").addEventListener("click", addContributor);
   document.getElementById("saveCitation").addEventListener("click", display);
+}
+
+function addContributor()
+{
+  var newContributor = document.createElement('div');
+  newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'First Name'> <input type = 'text' class = 'transbox' name = 'lastInputs[]' placeholder = 'Last Name'>";
+  document.getElementById("dynamicInput").appendChild(newContributor);
 }
 
 function display()

@@ -18,12 +18,10 @@
    <button type = "button" id = "autoCite" class = 'myButton'>
       cite this page
    </button>
-   <br>
-   <br>
+   <br><br>
    <button type = "button" id = "insertCite" class = 'myButton'>
      insert citation
-   </button>
-   <br>
+   </button><br>
   </div>  
 
  <div id ="citeForm" style = 'text-align:center; visibility:hidden; display:none'>
@@ -37,12 +35,16 @@
       article title
       <br>
       <input type = "text" class = "transbox" name = "siteTitle" placeholder = "Site Name" autofocus = "autofocus"> 
-      contributor name(s)
-      <input type = "text" class = "transbox" name = "firstName" placeholder = "First Name"> 
-      <input type = "text" class = "transbox" name = "lastName" placeholder = "Last Name">
-      <button class = 'cont' type = "button" id = "contributor"> <U>+</U> add a contributor </button>
+      <div id = "dynamicInput">
+      contributor/author name
+      <input type = "text" class = "transbox" name = "firstInputs[]" placeholder = "First Name" > 
+      <input type = "text" class = "transbox" name = "lastInputs[]" placeholder = "Last Name">
+    </div>
+      <button class = 'cont' type = "button" id = "contributor"> <U>a</U>dd a contributor </button> 
+
       <br>
-      website tite
+      <!-- END CONTRIBUTORS -->
+      website title
       <br>
       <input type = "text" class = "transbox" name = "wtitle" placeholder = "Website Title">
       publisher
