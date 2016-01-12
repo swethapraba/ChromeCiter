@@ -1,6 +1,6 @@
 /* CSS copyright Linus Lee, Polyx Studio */
 
-html,body,div,p{margin:0;padding:0}h1,h2{font-weight:normal}img{border:0}
+html,body,div,p{ margin:0; padding:0; overflow-y: scroll; } h1,h2{font-weight:normal}img{border:0}
 body{
     font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     font-variant: small-caps;
