@@ -351,13 +351,17 @@ function getData()
 
   return data;
 }
+function exportFile()
+{
 
+}
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
     document.getElementById("autoCite").addEventListener("click", onWindowLoad);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
+    document.getElementById("download").addEventListener("click", exportFile);
 
     var obj = {};
           var map = new Map();
