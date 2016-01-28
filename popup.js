@@ -87,7 +87,7 @@ function addContributor()
 }
 function display()
 {
-  chrome.storage.sync.clear(function(){ console.log("cleared")});
+  //chrome.storage.sync.clear(function(){ console.log("cleared")});
   var d = getData();
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
@@ -99,8 +99,7 @@ function display()
   url = values[0];
   d[6] = url;
   store(d);
-  });  ////////////
-  
+  }); 
 }
 
 function store(data)
