@@ -137,9 +137,9 @@ function store(data)
     function arrayToMap(element, index, array)
     {
       //make the map from the array of names
-      map.set(element, obj[element]);
-    }
-     names.forEach(arrayToMap);
+       map.set(element, obj[element]);
+      }
+      names.forEach(arrayToMap);
       //updating the display    
       map.forEach(function(value,key, map)
       {
