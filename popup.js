@@ -101,7 +101,6 @@ function display()
   store(d);
   }); 
 }
-
 function store(data)
 {
    /*
@@ -194,9 +193,7 @@ function scrape(website)
         wtitle.value = data[1];
         fName.value = data[2];
     });
-
 }
-
 function web(url)
 {
   var d = ['n/a', 'n/a', 'n/a']
@@ -284,7 +281,6 @@ function web(url)
   }
   return d;
 }
-
 function getData()
 {
   var site = document.getElementById('siteTitle');
@@ -337,14 +333,12 @@ function onWindowLoad() {
     }
   });
 }
-
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
     document.getElementById("autoCite").addEventListener("click", autoCiteMe);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
-
   }
 );
 
