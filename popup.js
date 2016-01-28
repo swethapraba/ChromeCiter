@@ -96,7 +96,6 @@ function display()
   buttons.style.visibility = 'visible';
   buttons.style.display = 'block';
   getCurrentTabUrl(function(values){
-<<<<<<< HEAD
     url = values[0];
     d[6] = url;
     store(d);
@@ -106,16 +105,6 @@ function display()
 function store(data)
 {
    /*
-=======
-  url = values[0];
-  d[6] = url;
-  store(d);
-  }); 
-}
-function store(data)
-{
-  /*
->>>>>>> origin/master
     site 0
     name 1
     website title 2
@@ -127,11 +116,7 @@ function store(data)
   console.log(data);
   var source = {};
   // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
-<<<<<<< HEAD
   citation = data[0] + " " + " " + data[1] + " " + data[5];
-=======
-  citation = data[0] + " " + data[5];
->>>>>>> origin/master
   console.log(citation);
   var key = "" + data[0];
   source[key] = citation;//""+citation[1]; 
@@ -151,15 +136,9 @@ function store(data)
     obj= new Object(items);
     names = Object.getOwnPropertyNames(obj);
     function arrayToMap(element, index, array)
-<<<<<<< HEAD
       {
         //make the map from the array of names
         map.set(element, obj[element]);
-=======
-    {
-      //make the map from the array of names
-       map.set(element, obj[element]);
->>>>>>> origin/master
       }
       names.forEach(arrayToMap);
       //updating the display    
@@ -168,11 +147,7 @@ function store(data)
         var array = value;
         console.log("array")
         var newCitation = document.createElement('div');
-<<<<<<< HEAD
         newCitation.innerHTML = array//array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
-=======
-        newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
->>>>>>> origin/master
         console.log("1");
         newCitation.style.backgroundColor = "white";
         newCitation.style.marginBottom = "7px";
@@ -200,7 +175,6 @@ function scrape(website)
   var dd = today.getDate();
   var mm = today.getMonth()+1; //January is 0!
   var yyyy = today.getFullYear();
-<<<<<<< HEAD
 
   if(dd<10) {
     dd='0'+dd
@@ -364,177 +338,13 @@ function onWindowLoad() {
   });
 }
 
-=======
-
-  if(dd<10) {
-    dd='0'+dd
-  } 
-
-  if(mm<10) {
-    mm='0'+mm
-  } 
-  today = mm+'/'+dd+'/'+yyyy;
-  cdate.value = today;
- 
-  getCurrentTabUrl(
-    function(values)
-    {
-        var data = web(website)
-        site.value = data[0];
-        wtitle.value = data[1];
-        fName.value = data[2];
-    });
-}
-function web(url)
-{
-  var d = ['n/a', 'n/a', 'n/a']
-
-  var sPattern = /<meta.property="og:title".content="([^"]*)">/
-  var sMatch = url.match(sPattern);
-  if(sMatch != null)
-  {
-    d[0] = sMatch[1];
-  }
-  else
-  {
-    sPattern = /<meta.content="([^"]*)".property="og:title">/
-    sMatch = url.match(sPattern);
-    if(sMatch != null)
-    {
-      d[0] = sMatch[1];
-    }
-    else
-    {
-      d[0] = 'n/a'
-    }
-  }
-
-
-
-  var wPattern = /<meta.property="og:site_name".content="([^"]*)">/
-  var wMatch = url.match(wPattern);
-  if(wMatch != null)
-  {
-    d[1] = wMatch[1];
-  }
-   else
-  {
-    wPatttern = /<meta.name="cre".content="([^"]*)">/
-    wMatch = url.match(wPatttern);
-    if(wMatch != null)
-    {
-      d[1] = wMatch[1];
-    }
-    else
-    {
-      wPatttern = /<meta.content="([^"]*)".property="og:site_name">/
-      wMatch = url.match(wPatttern);
-      if(wMatch != null)
-      {
-        d[1] = wMatch[1];
-      }
-      else
-      {
-        d[1] = 'n/a'
-      }
-    }
-  }
-
-
-
-  var nPattern = /<meta.name="author".content="([^"]*)">/
-  var nMatch = url.match(nPattern);
-  if(nMatch == null)
-  {
-    nPattern = /<meta.property="author".content="([^"]*)">/
-    nMatch = url.match(nPattern);
-    if(nMatch == null)
-    {
-      nPattern = /<meta.content="([^"]*)".name="author">/
-      nMatch = url.match(nPattern)
-      if(nMatch == null)
-      {
-        d[2] = 'n/a';
-      }
-      else
-      {
-        d[2] = nMatch[1];
-      }
-    }
-    else
-    {
-      d[2] = nMatch[1];
-    }
-  }
-  else
-  {
-    d[2] = nMatch[1];
-  }
-  return d;
-}
-function getData()
-{
-  var site = document.getElementById('siteTitle');
-  var fName = document.getElementById('firstInputs[]');
-  var lName = document.getElementById('lastInputs[]');
-  var wtitle = document.getElementById('wtitle');
-  var publisher = document.getElementById('published');
-  var pdate = document.getElementById('pdate');
-  var cdate = document.getElementById('date');
-
-  var data = [];
-  data[0] = site.value;
-  data[1] = fName.value;
-  data[2] = wtitle.value;
-  data[3] = publisher.value;
-  data[4] = pdate.value;
-  data[5] = cdate.value;
-
-  return data;
-}
-function onWindowLoad() {
-
-  var buttons = document.getElementById("newCitation");
-  buttons.style.visibility = 'hidden';
-  buttons.style.display = 'none';
-
-  var render = document.getElementById('title')
-  render.style.visibility = 'hidden'; 
-  render.style.display = 'none';
-
-  var result = document.getElementById('cite');
-  result.style.visibility = 'hidden'; 
-  result.style.display = 'none';
-
-  var forms = document.getElementById("citeForm");
-  forms.style.visibility = 'visible';
-  forms.style.display = 'block';
-
-  document.getElementById("contributor").addEventListener("click", addContributor);
-  document.getElementById("saveCitation").addEventListener("click", display);
-
-  var message = document.querySelector('#message');
-
-  chrome.tabs.executeScript(null, {
-    file: "getPagesSources.js"
-  }, function() {
-    // If you try and inject into an extensions page or the webstore/NTP you'll get an error
-    if (chrome.runtime.lastError) {
-      message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
-    }
-  });
-}
->>>>>>> origin/master
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
     document.getElementById("autoCite").addEventListener("click", autoCiteMe);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/master
   }
 );
 
