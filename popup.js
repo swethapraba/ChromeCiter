@@ -126,32 +126,24 @@ function addContributor()
 }
 function display()
 {
-  getData();
+  var a = getData();
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
   forms.style.display = 'none';
   var buttons = document.getElementById("newCitation");
   buttons.style.visibility = 'visible';
   buttons.style.display = 'block';
-   getCurrentTabUrl(function(values) 
-    {
-        url = values[0]
-        
-        //all the stuff about storage using cite URL and the page title
-        citeUrl(values, function(citation) 
-        {
-          //chrome.storage.sync.clear(function() {console.log("cleared")}); 
-          //till we build the clear button!
-          count++; 
-          var source = {};
-          /* key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) */
-          var key = "" + citation[0];
-          source[key] = citation;//""+citation[1]; 
+   //chrome.storage.sync.clear(function() {console.log("cleared")}); 
+  //till we build the clear button!
+    count++; 
+    var source = {};
+    /* key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) */
+          var key = "" + data[0];
+          source[key] = data[1];//""+citation[1]; 
           console.log(key);
           //add citation to storage- key is URL
           chrome.storage.sync.set(source, function()
             {console.log("yay");});
-
           var obj = {};
           var map = new Map();
           var names = new Array();
@@ -188,11 +180,6 @@ function display()
             /////////////all the stuff about storage using cite URL and the page title
           });
   
-          }, function(errorMessage) 
-        {
-          renderStatus('Cannot display image. ' + errorMessage);
-        });   
-    });
 }
 function scrape(website)
 {
@@ -311,7 +298,7 @@ function web(url)
   return d;
 }
 //UPDATE DISPLAY TO REFLECT TITLE AND SCRAPE
-
+//insert citation to empty fields. saveCitation calls getData to make the array-> pass that to display to update storage
 function onWindowLoad() {
 
   var buttons = document.getElementById("newCitation");
@@ -368,10 +355,42 @@ function getData()
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
-    document.getElementById("autoCite").addEventListener("click", autoCiteMe);
+    document.getElementById("autoCite").addEventListener("click", onWindowLoad);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
 
+    var obj = {};
+          var map = new Map();
+          var names = new Array();
+          console.log("7")
+          //Make iterable Map of stored data
+          chrome.storage.sync.get(null, function(items)
+          {
+            obj= new Object(items);
+            names = Object.getOwnPropertyNames(obj);
+            function arrayToMap(element, index, array)
+            {
+              //make the map from the array of names
+              map.set(element, obj[element]);
+            }
+            names.forEach(arrayToMap);
+             /*updating the display */
+         
+            map.forEach(function(value,key, map)
+          {
+            var array = value;
+            console.log("array")
+            var newCitation = document.createElement('div');
+            newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
+            console.log("1");
+            newCitation.style.backgroundColor = "white";
+            newCitation.style.marginBottom = "7px";
+            newCitation.style.padding = "6px";
+            newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
+            newCitation.style.borderRadius = "3px";
+            console.log("2")
+            document.getElementById("answered[]").appendChild(newCitation);
+          });
   }
 );
 chrome.runtime.onMessage.addListener(function(request, sender) {
