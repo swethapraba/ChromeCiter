@@ -87,6 +87,7 @@ function addContributor()
 }
 function display()
 {
+  chrome.storage.sync.clear(function(){ console.log("cleared")});
   var d = getData();
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
@@ -97,14 +98,28 @@ function display()
   getCurrentTabUrl(function(values){
   url = values[0];
   d[6] = url;
- // store(d);
+  store(d);
   });  ////////////
-  console.log(d);
+  
+}
+
+function store(data)
+{
+   /*
+    site 0
+    name 1
+    website title 2
+    publisher 3
+    published date 4
+    current date 5
+    url 6
+  */
+  console.log(data);
   var source = {};
   // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
-  citation = d[0] + " " + d[5];
+  citation = data[0] + " " + data[5];
   console.log(citation);
-  var key = "" + d[0];
+  var key = "" + data[0];
   source[key] = citation;//""+citation[1]; 
   console.log(source);
   //add citation to storage- key is URL
@@ -145,66 +160,6 @@ function display()
       });
       console.log("done");
   });
-}
-
-function store(data)
-{
-   /*
-    site 0
-    name 1
-    website title 2
-    publisher 3
-    published date 4
-    current date 5
-    url 6
-  */
-  console.log(data);
-  var source = {};
-  // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
-  citation = data[0] + " " + data[5];
-  console.log(citation);
-  var key = "" + data[0];
-  source[key] = citation;//""+citation[1]; 
-  console.log(source);
-  //add citation to storage- key is URL
-  chrome.storage.sync.set(source, function()
-  {
-    console.log("yay");
-  });
-    var obj = {};
-    var map = new Map();
-    var names = new Array();
-    console.log("7")
-    //Make iterable Map of stored data
-    chrome.storage.sync.get(null, function(items)
-    {
-      obj= new Object(items);
-      names = Object.getOwnPropertyNames(obj);
-      function arrayToMap(element, index, array)
-      {
-        //make the map from the array of names
-        map.set(element, obj[element]);
-      }
-      names.forEach(arrayToMap);
-      //updating the display 
-           
-      map.forEach(function(value,key, map)
-      {
-        var array = value;
-        console.log("array")
-        var newCitation = document.createElement('div');
-        newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
-        console.log("1");
-        newCitation.style.backgroundColor = "white";
-        newCitation.style.marginBottom = "7px";
-        newCitation.style.padding = "6px";
-        newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
-        newCitation.style.borderRadius = "3px";
-        console.log("2")
-        document.getElementById("answered[]").appendChild(newCitation);
-      });
-      console.log("done");
-    });
 }
 
 function scrape(website)
