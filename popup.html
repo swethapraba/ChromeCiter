@@ -9,7 +9,6 @@
   <head>
     <title>CiteMe</title>
     <link rel="stylesheet" type="text/css" href="a.css"/>
-    <script src="popup.js"></script>
   </head>
   <body>
 <body>
@@ -21,10 +20,15 @@
    <br><br>
    <button type = "button" id = "insertCite" class = 'myButton'>
      insert citation
-   </button><br>
+   </button>
+   <br><br>
+   <button type = "button" id = "auto" class = 'myButton'>
+     autocite
+   </button>
   </div>  
 
  <div id ="citeForm" style = 'text-align:center; visibility:hidden; display:none'>
+    <p id = 'message' style = 'visibility:hidden; display:none'></p>
     <form name = "myForm">
       <select size = "1" name = "resource" class = "dropdown">
         <option selected> APA
@@ -34,35 +38,35 @@
       <br>
       article title
       <br>
-      <input type = "text" class = "transbox" name = "siteTitle" placeholder = "Site Name" autofocus = "autofocus"> 
+      <input type = "text" class = "transbox" id = "siteTitle" placeholder = "Site Name" autofocus = "autofocus"> 
       <div id = "dynamicInput">
-      contributor/author name
-      <input type = "text" class = "transbox" name = "firstInputs[]" placeholder = "First Name" > 
-      <input type = "text" class = "transbox" name = "lastInputs[]" placeholder = "Last Name">
-    </div>
+        contributor/author name
+        <input type = "text" class = "transbox" id = "firstInputs[]" placeholder = "First Name" > 
+        <input type = "text" class = "transbox" id = "lastInputs[]" placeholder = "Last Name">
+      </div>
       <button class = 'cont' type = "button" id = "contributor"> <U>a</U>dd a contributor </button> 
 
       <br>
       <!-- END CONTRIBUTORS -->
       website title
       <br>
-      <input type = "text" class = "transbox" name = "wtitle" placeholder = "Website Title">
+      <input type = "text" class = "transbox" id = "wtitle" placeholder = "Website Title">
       publisher
       <br>
-      <input type = "text" class = "transbox" name = "published" placeholder = "Publisher"> 
+      <input type = "text" class = "transbox" id = "published" placeholder = "Publisher"> 
       published date
       <br>
-      <input type = "text" class = "transbox" name = "pdate" placeholder = "Date of Publication">
+      <input type = "text" class = "transbox" id = "pdate" placeholder = "Date of Publication">
       date accessed
       <br>
-      <input type = "text" class = "transbox" name = "date" placeholder = "Date Accessed"> 
+      <input type = "text" class = "transbox" id = "date" placeholder = "Date Accessed"> 
       <br>
       <button class = 'myButton' type = "button" id = "saveCitation"> <U>s</U>ave my citation </button>
     </form>
   </div>
 
   <div id="contentBox">
-    <table id = 'answered' class = 'transbox2' > 
+    <table id = 'answered[]' class = 'transbox2' > 
       <div id="title" style = "visibility:hidden; display:none; margin-top:8px">
           Current Page
       </div>
@@ -71,7 +75,7 @@
       </div>
     </table>
   </div>
-
+ <script src="popup.js"></script>
   </body>
 </html>
 
