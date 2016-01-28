@@ -82,7 +82,7 @@ function insertCiteMe()
 function addContributor()
 {
   var newContributor = document.createElement('div');
-  newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'First Name'> <input type = 'text' class = 'transbox' name = 'lastInputs[]' placeholder = 'Last Name'>";
+  newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'Name'> ";
   document.getElementById("dynamicInput").appendChild(newContributor);
 }
 function display()
@@ -104,7 +104,7 @@ function display()
 
 function store(data)
 {
-   /*
+  /*
     site 0
     name 1
     website title 2
@@ -115,12 +115,14 @@ function store(data)
   */
   console.log(data);
   var source = {};
-  // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
-  citation = data[0] + " " + " " + data[1] + " " + data[5];
+  //format citation
+  citation = data[1]+". " + "'"+ data[0]+"' "+ data[2] /*italicize*/+ ". " + data[3] + ". " + data[4] + ". Web." + data[5] + ". <" +data[6] + ">.";  
+  //data[0] + " " + " " + data[1] + " " + data[5];
   console.log(citation);
   var key = "" + data[0];
   source[key] = citation;//""+citation[1]; 
   console.log(source);
+  
   //add citation to storage- key is URL
   chrome.storage.sync.set(source, function()
   {
@@ -144,10 +146,10 @@ function store(data)
       //updating the display    
       map.forEach(function(value,key, map)
       {
-        var array = value;
+        //var array = value;
         console.log("array")
         var newCitation = document.createElement('div');
-        newCitation.innerHTML = array//array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
+        newCitation.innerHTML = value;//array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
         console.log("1");
         newCitation.style.backgroundColor = "white";
         newCitation.style.marginBottom = "7px";
