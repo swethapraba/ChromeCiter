@@ -103,7 +103,7 @@ function display()
 }
 function store(data)
 {
-   /*
+  /*
     site 0
     name 1
     website title 2
@@ -135,11 +135,11 @@ function store(data)
     obj= new Object(items);
     names = Object.getOwnPropertyNames(obj);
     function arrayToMap(element, index, array)
-      {
-        //make the map from the array of names
-        map.set(element, obj[element]);
-      }
-      names.forEach(arrayToMap);
+    {
+      //make the map from the array of names
+      map.set(element, obj[element]);
+    }
+     names.forEach(arrayToMap);
       //updating the display    
       map.forEach(function(value,key, map)
       {
