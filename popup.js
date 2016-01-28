@@ -29,9 +29,6 @@ function getCurrentTabUrl(callback) {
     callback(values);
   });
 }
-
-
-
 function renderStatus(statusText) 
 { 
   var render = document.getElementById('title')
@@ -39,8 +36,6 @@ function renderStatus(statusText)
   render.style.display = 'block';
   render.textContent = statusText;
 }
-
-
 function autoCiteMe()
 {
   var buttons = document.getElementById("newCitation");
@@ -61,8 +56,7 @@ function autoCiteMe()
 
   document.getElementById("contributor").addEventListener("click", addContributor);
   document.getElementById("saveCitation").addEventListener("click", display);
-  //alert("citing this page");
-  
+  //alert("citing this page"); 
 }
 function insertCiteMe()
 {
@@ -85,38 +79,72 @@ function insertCiteMe()
   document.getElementById("contributor").addEventListener("click", addContributor);
   document.getElementById("saveCitation").addEventListener("click", display);
 }
-
 function addContributor()
 {
   var newContributor = document.createElement('div');
   newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'First Name'> <input type = 'text' class = 'transbox' name = 'lastInputs[]' placeholder = 'Last Name'>";
   document.getElementById("dynamicInput").appendChild(newContributor);
 }
-
 function display()
 {
   var d = getData();
-
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
   forms.style.display = 'none';
-
   var buttons = document.getElementById("newCitation");
   buttons.style.visibility = 'visible';
   buttons.style.display = 'block';
-
   getCurrentTabUrl(function(values){
-    url = values[0];
-    d[6] = url;
-    renderStatus(d[0]);
-
-    var result = document.getElementById('cite');
-    result.style.visibility = 'visible'; 
-    result.style.display = 'block';
-    result.innerHTML = d[6];
-
-    store(d);
-  });  
+  url = values[0];
+  d[6] = url;
+ // store(d);
+  });  ////////////
+  console.log(d);
+  var source = {};
+  // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
+  citation = d[0] + " " + d[5];
+  console.log(citation);
+  var key = "" + d[0];
+  source[key] = citation;//""+citation[1]; 
+  console.log(source);
+  //add citation to storage- key is URL
+  chrome.storage.sync.set(source, function()
+  {
+    console.log("yay");
+  });
+  var obj = {};
+  var map = new Map();
+  var names = new Array();
+  console.log("7")
+  //Make iterable Map of stored data
+  chrome.storage.sync.get(null, function(items)
+  {
+    obj= new Object(items);
+    names = Object.getOwnPropertyNames(obj);
+    function arrayToMap(element, index, array)
+      {
+        //make the map from the array of names
+        map.set(element, obj[element]);
+      }
+      names.forEach(arrayToMap);
+      //updating the display    
+      map.forEach(function(value,key, map)
+      {
+        var array = value;
+        console.log("array")
+        var newCitation = document.createElement('div');
+        newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
+        console.log("1");
+        newCitation.style.backgroundColor = "white";
+        newCitation.style.marginBottom = "7px";
+        newCitation.style.padding = "6px";
+        newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
+        newCitation.style.borderRadius = "3px";
+        console.log("2")
+        document.getElementById("answered[]").appendChild(newCitation);
+      });
+      console.log("done");
+  });
 }
 
 function store(data)
@@ -133,7 +161,7 @@ function store(data)
   console.log(data);
   var source = {};
   // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
-  citation = data[0] + " " + data[6];
+  citation = data[0] + " " + data[5];
   console.log(citation);
   var key = "" + data[0];
   source[key] = citation;//""+citation[1]; 
@@ -354,8 +382,6 @@ function onWindowLoad() {
       message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
     }
   });
- 
-
 }
 
 //main
@@ -368,14 +394,9 @@ document.addEventListener('DOMContentLoaded', function()
   }
 );
 
-
 chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action == "getSource") {
     message.innerText = request.source;
     scrape(message.innerText);
   }
 });
-
-
-
-
