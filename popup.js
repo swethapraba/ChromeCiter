@@ -1,24 +1,4 @@
-/***
-// Copyright (c) 2014 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-// Most methods of the Chrome extension APIs are asynchronous. This means that
-// you CANNOT do something like this:
-//
-// var url;
-// chrome.tabs.query(queryInfo, function(tabs) {
-//   url = tabs[0].url;
-// });
-// alert(url); // Shows "undefined", because chrome.tabs.query is async.
-*****/
 
-/**
- * Get the current URL.
- *
- * @param {function(string)} callback - called when the URL of the current tab
- *   is found.
- */
- var data = [];
 function getCurrentTabUrl(callback) {
   // Query filter to be passed to chrome.tabs.query - see
   // https://developer.chrome.com/extensions/tabs#method-query
@@ -49,28 +29,17 @@ function getCurrentTabUrl(callback) {
     callback(values);
   });
 }
-/**
- * @param {string} searchTerm - Search term for Google Image search.
- * @param {function(string,number,number)} callback - Called when an image has
- *   been found. The callback gets the URL, width and height of the image.
- * @param {function(string)} errorCallback - Called when the image is not found.
- *   The callback gets a string that describes the failure reason.
- */
-var count = 0;
-function citeUrl(searchTerm, callback, errorCallback) 
-{
-  var url = searchTerm[0];
-  var title = searchTerm[1];
-  callback(searchTerm);
-}
+
+
 
 function renderStatus(statusText) 
 { 
-  var render = document.getElementById('title[]')
+  var render = document.getElementById('title')
   render.style.visibility = 'visible'; 
   render.style.display = 'block';
   render.textContent = statusText;
 }
+
 
 function autoCiteMe()
 {
@@ -78,11 +47,11 @@ function autoCiteMe()
   buttons.style.visibility = 'hidden';
   buttons.style.display = 'none';
 
-  var render = document.getElementById('title[]')
+  var render = document.getElementById('title')
   render.style.visibility = 'hidden'; 
   render.style.display = 'none';
 
-  var result = document.getElementById('cite[]');
+  var result = document.getElementById('cite');
   result.style.visibility = 'hidden'; 
   result.style.display = 'none';
 
@@ -95,14 +64,13 @@ function autoCiteMe()
   //alert("citing this page");
   
 }
-
 function insertCiteMe()
 {
   var buttons = document.getElementById("newCitation");
   buttons.style.visibility = 'hidden';
   buttons.style.display = 'none';
 
-  var render = document.getElementById('title[]')
+  var render = document.getElementById('title')
   render.style.visibility = 'hidden'; 
   render.style.display = 'none';
 
@@ -121,66 +89,96 @@ function insertCiteMe()
 function addContributor()
 {
   var newContributor = document.createElement('div');
-  newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]' placeholder = 'First Name'> <input type = 'text' class = 'transbox' name = 'lastInputs[]' placeholder = 'Last Name'>";
+  newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'First Name'> <input type = 'text' class = 'transbox' name = 'lastInputs[]' placeholder = 'Last Name'>";
   document.getElementById("dynamicInput").appendChild(newContributor);
 }
+
 function display()
 {
-  var a = getData();
+  var d = getData();
+
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
   forms.style.display = 'none';
+
   var buttons = document.getElementById("newCitation");
   buttons.style.visibility = 'visible';
   buttons.style.display = 'block';
-   //chrome.storage.sync.clear(function() {console.log("cleared")}); 
-  //till we build the clear button!
-    count++; 
-    var source = {};
-    /* key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) */
-          var key = "" + data[0];
-          source[key] = data[1];//""+citation[1]; 
-          console.log(key);
-          //add citation to storage- key is URL
-          chrome.storage.sync.set(source, function()
-            {console.log("yay");});
-          var obj = {};
-          var map = new Map();
-          var names = new Array();
-          console.log("7")
-          //Make iterable Map of stored data
-          chrome.storage.sync.get(null, function(items)
-          {
-            obj= new Object(items);
-            names = Object.getOwnPropertyNames(obj);
-            function arrayToMap(element, index, array)
-            {
-              //make the map from the array of names
-              map.set(element, obj[element]);
-            }
-            names.forEach(arrayToMap);
-             /*updating the display */
-         
-            map.forEach(function(value,key, map)
-          {
-            var array = value;
-            console.log("array")
-            var newCitation = document.createElement('div');
-            newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
-            console.log("1");
-            newCitation.style.backgroundColor = "white";
-            newCitation.style.marginBottom = "7px";
-            newCitation.style.padding = "6px";
-            newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
-            newCitation.style.borderRadius = "3px";
-            console.log("2")
-            document.getElementById("answered[]").appendChild(newCitation);
-          });
-            console.log("done");
-            /////////////all the stuff about storage using cite URL and the page title
-          });
-  
+
+  getCurrentTabUrl(function(values){
+    url = values[0];
+    d[6] = url;
+    renderStatus(d[0]);
+
+    var result = document.getElementById('cite');
+    result.style.visibility = 'visible'; 
+    result.style.display = 'block';
+    result.innerHTML = d[6];
+
+    store(d);
+  });  
 }
+
+function store(data)
+{
+   /*
+    site 0
+    name 1
+    website title 2
+    publisher 3
+    published date 4
+    current date 5
+    url 6
+  */
+  console.log(data);
+  var source = {};
+  // key: URL (citation[0]) 1- page URL (ctiation[0]) 2- page title (citation[1]) 
+  citation = data[0] + " " + data[6];
+  console.log(citation);
+  var key = "" + data[0];
+  source[key] = citation;//""+citation[1]; 
+  console.log(source);
+  //add citation to storage- key is URL
+  chrome.storage.sync.set(source, function()
+  {
+    console.log("yay");
+  });
+    var obj = {};
+    var map = new Map();
+    var names = new Array();
+    console.log("7")
+    //Make iterable Map of stored data
+    chrome.storage.sync.get(null, function(items)
+    {
+      obj= new Object(items);
+      names = Object.getOwnPropertyNames(obj);
+      function arrayToMap(element, index, array)
+      {
+        //make the map from the array of names
+        map.set(element, obj[element]);
+      }
+      names.forEach(arrayToMap);
+      //updating the display 
+           
+      map.forEach(function(value,key, map)
+      {
+        var array = value;
+        console.log("array")
+        var newCitation = document.createElement('div');
+        newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
+        console.log("1");
+        newCitation.style.backgroundColor = "white";
+        newCitation.style.marginBottom = "7px";
+        newCitation.style.padding = "6px";
+        newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
+        newCitation.style.borderRadius = "3px";
+        console.log("2")
+        document.getElementById("answered[]").appendChild(newCitation);
+      });
+      console.log("done");
+    });
+}
+
 function scrape(website)
 {
   var site = document.getElementById('siteTitle');
@@ -209,7 +207,7 @@ function scrape(website)
   getCurrentTabUrl(
     function(values)
     {
-        data = web(website)
+        var data = web(website)
         site.value = data[0];
         wtitle.value = data[1];
         fName.value = data[2];
@@ -220,6 +218,7 @@ function scrape(website)
 function web(url)
 {
   var d = ['n/a', 'n/a', 'n/a']
+
   var sPattern = /<meta.property="og:title".content="([^"]*)">/
   var sMatch = url.match(sPattern);
   if(sMatch != null)
@@ -239,6 +238,9 @@ function web(url)
       d[0] = 'n/a'
     }
   }
+
+
+
   var wPattern = /<meta.property="og:site_name".content="([^"]*)">/
   var wMatch = url.match(wPattern);
   if(wMatch != null)
@@ -267,6 +269,9 @@ function web(url)
       }
     }
   }
+
+
+
   var nPattern = /<meta.name="author".content="([^"]*)">/
   var nMatch = url.match(nPattern);
   if(nMatch == null)
@@ -297,8 +302,27 @@ function web(url)
   }
   return d;
 }
-//UPDATE DISPLAY TO REFLECT TITLE AND SCRAPE
-//insert citation to empty fields. saveCitation calls getData to make the array-> pass that to display to update storage
+
+function getData()
+{
+  var site = document.getElementById('siteTitle');
+  var fName = document.getElementById('firstInputs[]');
+  var lName = document.getElementById('lastInputs[]');
+  var wtitle = document.getElementById('wtitle');
+  var publisher = document.getElementById('published');
+  var pdate = document.getElementById('pdate');
+  var cdate = document.getElementById('date');
+
+  var data = [];
+  data[0] = site.value;
+  data[1] = fName.value;
+  data[2] = wtitle.value;
+  data[3] = publisher.value;
+  data[4] = pdate.value;
+  data[5] = cdate.value;
+
+  return data;
+}
 function onWindowLoad() {
 
   var buttons = document.getElementById("newCitation");
@@ -330,77 +354,28 @@ function onWindowLoad() {
       message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
     }
   });
-}
-function getData()
-{
-  var site = document.getElementById('siteTitle');
-  var fName = document.getElementById('firstInputs[]');
-  var lName = document.getElementById('lastInputs[]');
-  var wtitle = document.getElementById('wtitle');
-  var publisher = document.getElementById('published');
-  var pdate = document.getElementById('pdate');
-  var cdate = document.getElementById('date');
-
-  var data = []
-  data[0] = site.value;
-  data[1] = fName.value;
-  data[2] = wtitle.value;
-  data[3] = publisher.value;
-  data[4] = pdate.value;
-  data[5] = cdate.value;
-
-  return data;
-}
-function exportFile()
-{
+ 
 
 }
+
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
-    document.getElementById("autoCite").addEventListener("click", onWindowLoad);
+    document.getElementById("autoCite").addEventListener("click", autoCiteMe);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
-    document.getElementById("download").addEventListener("click", exportFile);
 
-    var obj = {};
-          var map = new Map();
-          var names = new Array();
-          console.log("7")
-          //Make iterable Map of stored data
-          chrome.storage.sync.get(null, function(items)
-          {
-            obj= new Object(items);
-            names = Object.getOwnPropertyNames(obj);
-            function arrayToMap(element, index, array)
-            {
-              //make the map from the array of names
-              map.set(element, obj[element]);
-            }
-            names.forEach(arrayToMap);
-             /*updating the display */
-         
-            map.forEach(function(value,key, map)
-          {
-            var array = value;
-            console.log("array")
-            var newCitation = document.createElement('div');
-            newCitation.innerHTML = array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
-            console.log("1");
-            newCitation.style.backgroundColor = "white";
-            newCitation.style.marginBottom = "7px";
-            newCitation.style.padding = "6px";
-            newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
-            newCitation.style.borderRadius = "3px";
-            console.log("2")
-            document.getElementById("answered[]").appendChild(newCitation);
-          });
   }
 );
+
+
 chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action == "getSource") {
     message.innerText = request.source;
     scrape(message.innerText);
   }
 });
+
+
+
 
