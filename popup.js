@@ -116,7 +116,7 @@ function store(data)
   console.log(data);
   var source = {};
   //format citation
-  citation = data[1]+". " + "'"+ data[0]+"' "+ data[2] /*italicize*/+ ". " + data[3] + ". " + data[4] + ". Web." + data[5] + ". <" +data[6] + ">.";  
+  citation = data[1]+". " + "'"+ data[0]+"' "+ data[2] /*italicize*/+ " " + data[3] + " " + data[4] + " Web." + data[5] + " <" +data[6] + ">";  
   //data[0] + " " + " " + data[1] + " " + data[5];
   console.log(citation);
   var key = "" + data[0];
@@ -196,9 +196,7 @@ function scrape(website)
         wtitle.value = data[1];
         fName.value = data[2];
     });
-
 }
-
 function web(url)
 {
   var d = ['n/a', 'n/a', 'n/a']
@@ -286,7 +284,6 @@ function web(url)
   }
   return d;
 }
-
 function getData()
 {
   var site = document.getElementById('siteTitle');
@@ -339,14 +336,22 @@ function onWindowLoad() {
     }
   });
 }
+function downloadFile()
+{
 
+}
+function openOptions()
+{
+  
+}
 //main
 document.addEventListener('DOMContentLoaded', function() 
   {
     document.getElementById("autoCite").addEventListener("click", autoCiteMe);
     document.getElementById("insertCite").addEventListener("click", insertCiteMe); 
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
-
+    document.getElementById("export").addEventListener("click", downloadFile);
+    document.getElementById("options").addEventListener("click", openOptions);
   }
 );
 
