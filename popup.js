@@ -126,6 +126,7 @@ function addContributor()
 }
 function display()
 {
+  getData();
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
   forms.style.display = 'none';
@@ -342,8 +343,26 @@ function onWindowLoad() {
       message.innerText = 'There was an error injecting script : \n' + chrome.runtime.lastError.message;
     }
   });
- 
+}
+function getData()
+{
+  var site = document.getElementById('siteTitle');
+  var fName = document.getElementById('firstInputs[]');
+  var lName = document.getElementById('lastInputs[]');
+  var wtitle = document.getElementById('wtitle');
+  var publisher = document.getElementById('published');
+  var pdate = document.getElementById('pdate');
+  var cdate = document.getElementById('date');
 
+  var data = []
+  data[0] = site.value;
+  data[1] = fName.value;
+  data[2] = wtitle.value;
+  data[3] = publisher.value;
+  data[4] = pdate.value;
+  data[5] = cdate.value;
+
+  return data;
 }
 
 //main
