@@ -130,7 +130,7 @@ function intext(d)
       }
   }
   
-  return ite;
+  return "(" + ite + ")";
 }
 function display()
 {
