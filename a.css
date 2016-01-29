@@ -2,11 +2,13 @@
 
 html,body,div,p{ margin:0; padding:0; overflow-y: scroll; } h1,h2{font-weight:normal}img{border:0}
 body{
-    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    /*font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
     font-variant: small-caps;
-    font-size: 20px;
+    font-size: 20px;*/
+    font-family: 'Times New Roman', serif;
+    font-size: 12px;
     width:250px;
-    height:auto;
+   /* height:auto;*/
     background-color:#dfdfdf;
     overflow:hidden;
     padding:10px;
@@ -29,13 +31,19 @@ body{
     background:white;
     margin-bottom:7px;
     padding:6px;
-    font-family: 'Times New Roman', serif;
-    font-size: 12px;
+    width: 300px;
+   /* font-family: 'Times New Roman', serif;
+    font-size: 12px;*/
     box-shadow:0 2px 6px rgba(0,0,0,0.4);
     border-radius:3px;
 }
 #title{
     font-weight:bold;
+}
+#answered[]{
+    width: 250px;
+    font-family: 'Times New Roman', serif;
+    font-size: 12px;
 }
 #label{
     color:#777777;
