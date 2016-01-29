@@ -85,6 +85,53 @@ function addContributor()
   newContributor.innerHTML = "contributor/author name" + "<br><input type = 'text' class = 'transbox' name = 'firstInputs[]'placeholder = 'Name'> ";
   document.getElementById("dynamicInput").appendChild(newContributor);
 }
+function intext(d)
+{
+  ite = ''
+  //alert(d[1]);
+  if(d[1] == "")
+  {
+    var words = d[0].split(" ");
+    if (words.length < 5)
+    {
+      ite = d[0];
+    }
+    else
+    {
+      for(y = 0; y++; y < 5)
+      {
+        ite += words[y] + " ";
+      }
+    }
+  }
+  else if(d[1].length != 0)
+  {
+      var names = d[1].split(',');
+      if(names.length === 2)
+      {
+        var one = names[0].split(" ");
+        var two = names[1].split(" ");
+        ite = one[one.length - 1] + " and " + two[two.length - 1];
+      }
+      else
+      {
+        for(x = 0; x < names.length; x++)
+        {
+          var lnames = names[x].split(' ')
+          if(x == 0)
+          {
+            ite = lnames[lnames.length -1] + " ";
+          }
+          else
+          {
+            ite += lnames[lnames.length -1] + " ";
+          }
+        }
+      }
+  }
+  
+  return ite;
+}
 function display()
 {
   //chrome.storage.sync.clear(function(){ console.log("cleared")});
@@ -97,7 +144,8 @@ function display()
   buttons.style.display = 'block';
   getCurrentTabUrl(function(values){
     url = values[0];
-    d[6] = url;
+    d[6] = url + ".";
+    d[7] = intext(d);
     store(d);
   }); 
 }
@@ -116,7 +164,7 @@ function store(data)
   console.log(data);
   var source = {};
   //format citation
-  citation = data[1]+". " + "'"+ data[0]+"' "+ data[2] /*italicize*/+ " " + data[3] + " " + data[4] + " Web." + data[5] + " <" +data[6] + ">";  
+  citation = data[1]+" "+"'<i>"+ data[0]+"<i>' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">";  
   //data[0] + " " + " " + data[1] + " " + data[5];
   console.log(citation);
   var key = "" + data[0];
@@ -184,8 +232,60 @@ function scrape(website)
 
   if(mm<10) {
     mm='0'+mm
+  }
+
+
+  if(mm == 1)
+  {
+    mm = "Jan."
   } 
-  today = mm+'/'+dd+'/'+yyyy;
+  if(mm == 2)
+  {
+    mm = "Feb."
+  } 
+  if(mm == 3)
+  {
+    mm = "Mar."
+  } 
+  if(mm == 4)
+  {
+    mm = "Apr."
+  } 
+  if(mm == 5)
+  {
+    mm = "May"
+  } 
+  if(mm == 6)
+  {
+    mm = "Jun."
+  } 
+  if(mm == 7)
+  {
+    mm = "Jul."
+  } 
+  if(mm == 8)
+  {
+    mm = "Aug."
+  } 
+  if(mm == 9)
+  {
+    mm = "Sept."
+  } 
+  if(mm == 10)
+  {
+    mm = "Oct."
+  } 
+  if(mm == 11)
+  {
+    mm = "Nov."
+  } 
+  if(mm == 12)
+  {
+    mm = "Dec."
+  } 
+  
+
+  today = dd+' '+mm+' '+yyyy;
   cdate.value = today;
  
   getCurrentTabUrl(
@@ -196,6 +296,7 @@ function scrape(website)
         wtitle.value = data[1];
         fName.value = data[2];
     });
+
 }
 function web(url)
 {
@@ -295,13 +396,60 @@ function getData()
   var cdate = document.getElementById('date');
 
   var data = [];
-  data[0] = site.value;
-  data[1] = fName.value;
-  data[2] = wtitle.value;
-  data[3] = publisher.value;
-  data[4] = pdate.value;
-  data[5] = cdate.value;
+  if(site.value.length === 0)
+  {
+    data[0] = "";
+  }
+  else if(site.value != null)
+  {
+    data[0] = site.value + ".";
+  }
 
+  if(fName.value.length === 0)
+  {
+    data[1] = "";
+  }
+  else if(fName.value != null)
+  {
+    data[1] = fName.value + ".";
+  }
+
+  if(wtitle.value.length === 0)
+  {
+    data[2] = "";
+  }
+  else if(wtitle.value != null)
+  {
+     data[2] = wtitle.value + ".";
+  }
+  
+  if(publisher.value.length === 0)
+  {
+    data[3] = "";
+  }
+  else if(publisher.value!= null)
+  {
+    data[3] = publisher.value + ".";
+  }
+  
+  if(pdate.value!= null)
+  {
+    data[4] = "";
+  }
+  else if(pdate.value!= null)
+  {
+    data[4] = pdate.value + ".";
+  }
+  
+  if(cdate.value.length === 0)
+  {
+    data[5] = "";
+  }
+  else if(cdate.value!= null)
+  {
+    data[5] = cdate.value + ".";
+  }
+  
   return data;
 }
 function onWindowLoad() {
@@ -346,7 +494,6 @@ function downloadFile()
   {
     obj= new Object(items);
     names = Object.getOwnPropertyNames(obj);
-    var file = "Works Cited\n";
     function arrayToMap(element, index, array)
       {
         //make the map from the array of names
@@ -357,19 +504,20 @@ function downloadFile()
       //take array of stuff and properly format for the blob
 
       var theFileElement = document.getElementById("file").innerHTML;
-      console.log(theFileElement);
+      console.log("the file" + theFileElement);
       function makeText(element, index, array)
       {
-        theFileElement += element + "\n"; 
+        theFileElement += element + "\r\n"; 
       }
 
       values.forEach(makeText);
 
-      var textToWrite = theFileElement.value;
-     // textToWrite = textToWrite.replace(/\n/g, "\r\n");
-     console.log(textToWrite);
-      //var blob = new Blob([textToWrite], {type: "text/plain;charset=utf-8"});
-     // saveAs(blob, "myProject.txt");
+      var textToWrite = theFileElement;
+      textToWrite = textToWrite.replace(/\n/g, "\r\n");
+      textToWrite = textToWrite.replace("'<i><i>'    ", "\r\n");
+      console.log(textToWrite);
+      var blob = new Blob([textToWrite], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, "myProject.txt");
   });
 }
 function openOptions()
