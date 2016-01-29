@@ -203,6 +203,7 @@ function store(data)
         newCitation.style.padding = "6px";
         newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
         newCitation.style.borderRadius = "3px";
+        newCitation.style.width = "250px";
         console.log("2")
         document.getElementById("answered[]").appendChild(newCitation);
       });
