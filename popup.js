@@ -163,7 +163,7 @@ function store(data)
   console.log(data);
   var source = {};
   //format citation
-  citation = data[0] + ":" + "<br>" + data[7];
+  citation = data[0] + ":" + "<br>" + "(" + data[7] + ")";
   citations = data[1]+" "+"'"+ data[0]+"' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">"; //without italics
   //citation = data[1]+" "+"'<i>"+ data[0]+"<i>' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">";  
   console.log(citation);
@@ -295,7 +295,6 @@ function scrape(website)
         wtitle.value = data[1];
         fName.value = data[2];
     });
-
 }
 function web(url)
 {
@@ -532,6 +531,17 @@ function openOptions()
   formst.style.display = 'none';
 
   document.getElementById("delete").addEventListener("click", clearAll);
+  document.getElementById("cancel").addEventListener("click", cancelDelete);
+}
+function cancelDelete()
+{
+  var formst = document.getElementById("clearWarning");
+  formst.style.visibility = 'hidden';
+  formst.style.display = 'none';
+
+  var result = document.getElementById('helpme');
+  result.style.visibility = 'hidden'; 
+  result.style.display = 'none';
 }
 function clearAll()
 {
@@ -546,6 +556,9 @@ function clearAll()
       var result = document.getElementById('helpme');
       result.style.visibility = 'hidden'; 
       result.style.display = 'none';
+      
+      var displays = document.getElementById("answered[]");
+      displays.innerHTML = "";
     });
 }
 function closeHelpText()
@@ -576,6 +589,7 @@ document.addEventListener('DOMContentLoaded', function()
     document.getElementById("export").addEventListener("click", downloadFile);
     document.getElementById("options").addEventListener("click", openOptions);
     document.getElementById("info").addEventListener("click", helpText);
+    display();
   }
 );
 
