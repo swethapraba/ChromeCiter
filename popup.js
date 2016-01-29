@@ -356,7 +356,16 @@ function web(url)
     }
     else
     {
-      d[0] = ''
+      sPattern = /<title>(.*)<\/title>/
+      sMatch = url.match(sPattern);
+      if(sMatch != null)
+      {
+        d[0] = sMatch[1];
+      }
+      else
+      {
+        d[0] = '';
+      }
     }
   }
 
