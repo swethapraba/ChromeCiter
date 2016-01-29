@@ -11,11 +11,11 @@
   </head>
   <body>
 <body>
- <span> 
-  <button id = "export" class = 'menu'> Export Citations </button>
-  <button id = "options" class = 'menu'> Delete Project </button>
-  <button id = "info" class = 'menu'> Help </button>
-</span>
+ <div style = 'text-align:center;'> 
+  <button id = "export" class = 'menu'> export citations </button>
+  <button id = "options" class = 'menu'> delete project </button>
+  <button id = "info" class = 'm'>?</button>
+</div>
   <div id = "helpme" style = "visibility:hidden; display:none; text-align:center;" class = 'menuContent'>
     <p> Welcome to CiteMe!<p>
     <p> Click on "Cite This Page" to create a citation for your current webpage. Fill in any fields that we were not able to automatically find. <br>Click on "Insert Citation" to enter in a new citation from scratch- this form works for most standard sources
@@ -56,28 +56,23 @@
       </select> 
 
       <br>
-      article title
-      <br>
+      <h3>article title</h3>
       <input type = "text" class = "transbox" id = "siteTitle" placeholder = "Site Name" autofocus = "autofocus"> 
       <div id = "dynamicInput">
-        contributor/author name
+        <h3>contributor/author name</h3>
         <input type = "text" class = "transbox" id = "firstInputs[]" placeholder = "Last Name, First Name" > 
       </div>
       <button class = 'cont' type = "button" id = "contributor"> <U>a</U>dd a contributor </button> 
 
       <br>
       <!-- END CONTRIBUTORS -->
-      website title
-      <br>
+      <h3>website title</h3>
       <input type = "text" class = "transbox" id = "wtitle" placeholder = "Website Title">
-      publisher
-      <br>
+      <h3>publisher</h3>
       <input type = "text" class = "transbox" id = "published" placeholder = "Publisher"> 
-      published date
-      <br>
+      <h3>published date</h3>
       <input type = "text" class = "transbox" id = "pdate" placeholder = "DD MMM. YYYY">
-      date accessed
-      <br>
+      <h3>date accessed</h3>
       <input type = "text" class = "transbox" id = "date" placeholder = "DD MMM. YYYY"> 
       <br>
       <button class = 'myButton' type = "button" id = "saveCitation"> <U>s</U>ave my citation </button>
