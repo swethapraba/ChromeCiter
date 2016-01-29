@@ -134,7 +134,6 @@ function intext(d)
 }
 function display()
 {
-  //chrome.storage.sync.clear(function(){ console.log("cleared")});
   var d = getData();
   var forms = document.getElementById("citeForm");
   forms.style.visibility = 'hidden';
@@ -164,11 +163,12 @@ function store(data)
   console.log(data);
   var source = {};
   //format citation
-  citation = data[1]+" "+"'<i>"+ data[0]+"<i>' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">";  
-  //data[0] + " " + " " + data[1] + " " + data[5];
+  citation = data[0] + ":" + "<br>" + data[7];
+  citations = data[1]+" "+"'"+ data[0]+"' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">"; //without italics
+  //citation = data[1]+" "+"'<i>"+ data[0]+"<i>' "+data[2]+" "+data[3]+" "+data[4]+" Web."+data[5]+" <"+data[6]+">";  
   console.log(citation);
   var key = "" + data[0];
-  source[key] = citation;//""+citation[1]; 
+  source[key] = data //citations;//""+citation[1]; 
   console.log(source);
   
   //add citation to storage- key is URL
@@ -194,10 +194,9 @@ function store(data)
       //updating the display    
       map.forEach(function(value,key, map)
       {
-        //var array = value;
-        console.log("array")
+        var array = value;
         var newCitation = document.createElement('div');
-        newCitation.innerHTML = value;//array[1] + "<br>" + array[0]; //temp citation until we get proper formatting
+        newCitation.innerHTML = citation = array[0] + ":" + "<br>" + array[7];
         console.log("1");
         newCitation.style.backgroundColor = "white";
         newCitation.style.marginBottom = "7px";
@@ -452,7 +451,8 @@ function getData()
   
   return data;
 }
-function onWindowLoad() {
+function onWindowLoad() 
+{
 
   var buttons = document.getElementById("newCitation");
   buttons.style.visibility = 'hidden';
@@ -504,6 +504,7 @@ function downloadFile()
       //take array of stuff and properly format for the blob
 
       var theFileElement = document.getElementById("file").innerHTML;
+      theFileElement += "\r\n";
       console.log("the file" + theFileElement);
       function makeText(element, index, array)
       {
@@ -522,7 +523,49 @@ function downloadFile()
 }
 function openOptions()
 {
+  var forms = document.getElementById("clearWarning");
+  forms.style.visibility = 'visible';
+  forms.style.display = 'block';
 
+  var formst = document.getElementById("helpme");
+  formst.style.visibility = 'hidden';
+  formst.style.display = 'none';
+
+  document.getElementById("delete").addEventListener("click", clearAll);
+}
+function clearAll()
+{
+  downloadFile();
+  chrome.storage.sync.clear(function()
+    { 
+      console.log("cleared");
+      var formst = document.getElementById("clearWarning");
+      formst.style.visibility = 'hidden';
+      formst.style.display = 'none';
+
+      var result = document.getElementById('helpme');
+      result.style.visibility = 'hidden'; 
+      result.style.display = 'none';
+    });
+}
+function closeHelpText()
+{
+  var result = document.getElementById('helpme');
+  result.style.visibility = 'hidden'; 
+  result.style.display = 'none';
+}
+
+function helpText()
+{
+  var forms = document.getElementById("helpme");
+  forms.style.visibility = 'visible';
+  forms.style.display = 'block';
+
+  var formst = document.getElementById("clearWarning");
+  formst.style.visibility = 'hidden';
+  formst.style.display = 'none';
+
+  document.getElementById("close").addEventListener("click", closeHelpText);
 }
 //main
 document.addEventListener('DOMContentLoaded', function() 
@@ -532,6 +575,7 @@ document.addEventListener('DOMContentLoaded', function()
     document.getElementById("auto").addEventListener("click", onWindowLoad); 
     document.getElementById("export").addEventListener("click", downloadFile);
     document.getElementById("options").addEventListener("click", openOptions);
+    document.getElementById("info").addEventListener("click", helpText);
   }
 );
 

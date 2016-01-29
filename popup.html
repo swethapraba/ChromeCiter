@@ -13,21 +13,34 @@
   <body>
 <body>
  <span> 
-  <button id = "export"> Download Bibliography </button>
-  <button id = "options"> Delete My Project </button>
+  <button id = "export" class = 'menu'> Export Citations </button>
+  <button id = "options" class = 'menu'> Delete Project </button>
+  <button id = "info" class = 'menu'> Help </button>
 </span>
+  <div id = "helpme" style = "visibility:hidden; display:none; text-align:center;" class = 'menuContent'>
+    <p> Welcome to CiteMe!<p>
+    <p> Click on "AutoCite" to automatically generate a MLA citation for your current page. Fill in any fields that we were not able to automatically find. Click on "Insert Citation" to enter in a new citation from scratch- this form works for most standard sources
+      such as books, websites, etc. </p> 
+    <button id = "close" > Close Help Text </button>
+  </div>
+  <div id = "clearWarning" style = "visibility:hidden; display:none; text-align:center;" class = 'menuContent'>
+    <p> Are you sure you want to do this? This decision cannot be retrieved and will be permanently deleted.</p>
+    <p> A final copy of this project will be downloaded as part of this decision <p>
+    <button id = "delete" > I understand, <u>delete my project</u> </button>
+  </div>
+ 
  <div id="masthead"> CiteMe </div>
  <div id="newCitation" style = 'text-align:center'>
-   <button type = "button" id = "autoCite" class = 'myButton'>
+  <button type = "button" id = "autoCite" class = 'myButton' style = 'visibility:hidden; display:none'>
       cite this page
+   </button>
+   <!-- <br><br>-->
+   <button type = "button" id = "auto" class = 'myButton'>
+     autocite
    </button>
    <br><br>
    <button type = "button" id = "insertCite" class = 'myButton'>
      insert citation
-   </button>
-   <br><br>
-   <button type = "button" id = "auto" class = 'myButton'>
-     autocite
    </button>
   </div>  
 

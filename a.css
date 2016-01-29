@@ -120,6 +120,49 @@ button.start
     font-variant:normal;
     font-size: 13px;
 }
+.menuContent{
+    -moz-box-shadow: 0px 10px 14px -7px #276873;
+    -webkit-box-shadow: 0px 10px 14px -7px #276873;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background-color:#990066;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-variant: small-caps;
+    font-size:12px;
+    height: 50px;
+    width : 250px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+.menu{
+    -moz-box-shadow: 0px 10px 14px -7px #276873;
+    -webkit-box-shadow: 0px 10px 14px -7px #276873;
+    box-shadow: 0px 10px 14px -7px #276873;
+    background-color:#990066;
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    border-radius:8px;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family: 'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    font-variant: small-caps;
+    font-size:12px;
+    height: 20px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+.menu:hover {
+    background-color:#993366;
+}
+.menuContent:hover {
+    background-color:#993366;
+}
 .myButton {
     -moz-box-shadow: 0px 10px 14px -7px #276873;
     -webkit-box-shadow: 0px 10px 14px -7px #276873;
