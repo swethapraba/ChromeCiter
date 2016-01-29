@@ -107,7 +107,7 @@ function intext(d)
   else if(d[1].length != 0)
   {
       var names = d[1].split(',');
-      if(names.length === 2)
+      /*if(names.length === 2)
       {
         var one = names[0].split(" ");
         var two = names[1].split(" ");
@@ -127,7 +127,8 @@ function intext(d)
             ite += lnames[lnames.length -1] + " ";
           }
         }
-      }
+      }*/
+      ite = names[0];
   }
   
   return "(" + ite + ")";
@@ -143,6 +144,10 @@ function display()
   buttons.style.display = 'block';
   getCurrentTabUrl(function(values){
     url = values[0];
+    if(d[0].length === 0)
+    {
+      d[0] = values[1];
+    }
     d[6] = url + ".";
     d[7] = intext(d);
     store(d);
@@ -211,6 +216,40 @@ function store(data)
   });
 }
 
+function initial()
+{
+  var obj = {};
+  var map = new Map();
+  var names = new Array();
+  chrome.storage.sync.get(null, function(items)
+  {
+    obj= new Object(items);
+    names = Object.getOwnPropertyNames(obj);
+    function arrayToMap(element, index, array)
+      {
+        //make the map from the array of names
+        map.set(element, obj[element]);
+      }
+      names.forEach(arrayToMap);
+      //updating the display    
+      map.forEach(function(value,key, map)
+      {
+        var array = value;
+        var newCitation = document.createElement('div');
+        newCitation.innerHTML = citation = array[0] + ":" + "<br>" + array[7];
+        console.log("1");
+        newCitation.style.backgroundColor = "white";
+        newCitation.style.marginBottom = "7px";
+        newCitation.style.padding = "6px";
+        newCitation.style.boxShadow= "0 2px 6px rgba(0,0,0,0.4)";
+        newCitation.style.borderRadius = "3px";
+        newCitation.style.width = "250px";
+        console.log("2")
+        document.getElementById("answered[]").appendChild(newCitation);
+      });
+      console.log("done");
+  });
+}
 function scrape(website)
 {
   var site = document.getElementById('siteTitle');
@@ -590,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function()
     document.getElementById("export").addEventListener("click", downloadFile);
     document.getElementById("options").addEventListener("click", openOptions);
     document.getElementById("info").addEventListener("click", helpText);
-    display();
+    initial();
   }
 );
 
