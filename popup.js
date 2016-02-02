@@ -534,39 +534,39 @@ function onWindowLoad()
 }
 function downloadFile()
 {
-  var obj = {};
-  var map = new Map();
-  var names = new Array();
-  var values = new Array();
+  var obj = {}; //object of storage stuff
+  var map = new Map(); //map is usable data
+  var names = new Array(); //array of keys
+  var values = new Array(); //array of the values
+
   chrome.storage.sync.get(null, function(items)
   {
     obj= new Object(items);
     names = Object.getOwnPropertyNames(obj);
-    function arrayToMap(element, index, array)
-      {
-        //make the map from the array of names
-        map.set(element, obj[element]);
-        values.push(obj[element]);
-      }
-      names.forEach(arrayToMap);
-      //take array of stuff and properly format for the blob
+    function arrayToMap(element, index, array)  //make the map from the array of names
+    {
+      map.set(element, obj[element]); //make map with string keys (element of names) and array values
+      values.push(obj[element]);//add the values to another array for easy use
+    }
+    names.forEach(arrayToMap); //make the map
+    /*take array of stuff and properly format for the blob*/
+    var theFileElement = document.getElementById("file").innerHTML; //make an element to append the data to
+    theFileElement += "\r\n"; //add an extra line
+    function makeText(element, index, array) //translate all the data to our file element
+    {
+      console.log(element);//testpoint
+      theFileElement += element[1]+" "+"'"+element[0]+"' "+element[2]+" "+element[3]+" "+element[4]+" Web."+element[5]+" <"+element[6]+">" + "\r\n";
+      //^^^ make the actual citation
+    }
 
-      var theFileElement = document.getElementById("file").innerHTML;
-      theFileElement += "\r\n";
-      console.log("the file" + theFileElement);
-      function makeText(element, index, array)
-      {
-        theFileElement += element + "\r\n"; 
-      }
-
-      values.forEach(makeText);
-
-      var textToWrite = theFileElement;
-      textToWrite = textToWrite.replace(/\n/g, "\r\n");
-      textToWrite = textToWrite.replace("'<i><i>'    ", "\r\n");
-      console.log(textToWrite);
-      var blob = new Blob([textToWrite], {type: "text/plain;charset=utf-8"});
-      saveAs(blob, "myProject.txt");
+    values.forEach(makeText); //create a string/element that can be used by blobs
+    var textToWrite = theFileElement; //create variable
+    textToWrite = textToWrite.replace(/\n/g, "\r\n"); //fix spacing
+    textToWrite = textToWrite.replace("'<i><i>'    ", "\r\n");
+    console.log(textToWrite);//testpoint
+    var blob = new Blob([textToWrite], {type: "text/plain;charset=utf-8"}); //make blob
+    saveAs(blob, "myProject.txt"); //Filesaver.js to export
+    console.log("exported"); //testpoint*/
   });
 }
 function openOptions()
