@@ -89,7 +89,7 @@ function intext(d)
 {
   ite = ''
   //alert(d[1]);
-  if(d[1] == "")
+  if(d[1].length === 0)
   {
     var words = d[0].split(" ");
     if (words.length < 5)
@@ -107,27 +107,6 @@ function intext(d)
   else if(d[1].length != 0)
   {
       var names = d[1].split(',');
-      /*if(names.length === 2)
-      {
-        var one = names[0].split(" ");
-        var two = names[1].split(" ");
-        ite = one[one.length - 1] + " and " + two[two.length - 1];
-      }
-      else
-      {
-        for(x = 0; x < names.length; x++)
-        {
-          var lnames = names[x].split(' ')
-          if(x == 0)
-          {
-            ite = lnames[lnames.length -1] + " ";
-          }
-          else
-          {
-            ite += lnames[lnames.length -1] + " ";
-          }
-        }
-      }*/
       ite = names[0];
   }
   
