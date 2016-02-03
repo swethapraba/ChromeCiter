@@ -175,7 +175,20 @@ function store(data)
         map.set(element, obj[element]);
       }
       names.forEach(arrayToMap);
-      //updating the display    
+      //updating the display 
+
+      console.log("cleared");
+      var formst = document.getElementById("clearWarning");
+      formst.style.visibility = 'hidden';
+      formst.style.display = 'none';
+
+      var result = document.getElementById('helpme');
+      result.style.visibility = 'hidden'; 
+      result.style.display = 'none';
+      
+      var displays = document.getElementById("answered[]");
+      displays.innerHTML = "";
+         
       map.forEach(function(value,key, map)
       {
         var array = value;
