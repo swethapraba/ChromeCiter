@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "CiteMe for Chrome",
-  "description": "This extension provides an easy way for students to manage their citations.",
+  "name": "ChromeCiter",
+  "description": "This extension provides an easy way for students to manage their citations. It is designed for MLA citations. Note- this software is not perfect (just like humans). It is the responsibility of the student to correct any discrepancies that our software was not able to catch!",
   "version": "1.0",
  
   "browser_action": {
