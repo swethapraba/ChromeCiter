@@ -2,7 +2,9 @@
   "manifest_version": 2,
 
   "name": "ChromeCiter",
-  "description": "This extension provides an easy way for students to manage their citations. It is designed for MLA citations. Note- this software is not perfect (just like humans). It is the responsibility of the student to correct any discrepancies that our software was not able to catch!",
+  "description": "This extension provides an easy way for students to manage their citations. It is designed for MLA citations. 
+  Note- this software is not perfect (just like humans). It is the responsibility of the student to correct any style errors 
+  that our software was not able to automatically catch and fix!",
   "version": "1.0",
  
   "browser_action": {
