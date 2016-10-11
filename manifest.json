@@ -3,7 +3,7 @@
 
   "name": "ChromeCiter",
   "description": "ChromeCiter cites webpages and generates in-text citations in MLA format, providing students an easy way to manage 
-  their MLA bibliographies. Disclaimer:this extension is not perfect (just like humans). It is the responsibility of the student to correct any style errors 
+  their MLA bibliographies. Disclaimer-this extension is not perfect (just like humans). It is the responsibility of the student to correct any style errors 
   that our software was not able to automatically catch and fix!",
   "version": "1.1",
  
@@ -11,6 +11,7 @@
     "default_icon": "icon38.png",
     "default_popup": "popup.html"
   },
+
   "icons": {
     "16": "icon16.png",
     "32": "icon32.png",
