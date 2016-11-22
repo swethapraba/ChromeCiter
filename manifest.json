@@ -2,23 +2,20 @@
   "manifest_version": 2,
 
   "name": "ChromeCiter",
-  "description": "ChromeCiter cites webpages and generates in-text citations in MLA format, providing students an easy way to manage 
-  their MLA bibliographies. Disclaimer-this extension is not perfect (just like humans). It is the responsibility of the student to correct any style errors 
-  that our software was not able to automatically catch and fix!",
-  "version": "1.1",
- 
-  "browser_action": {
-    "default_icon": "icon38.png",
-    "default_popup": "popup.html"
-  },
+  "version": "1.2",
+
+  "description": "Automatically create MLA in-text citations in your browser",
 
   "icons": {
-    "16": "icon16.png",
+     "16": "icon16.png",
     "32": "icon32.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-
+  "browser_action": {
+    "default_icon": "icon38.png",
+    "default_popup": "popup.html"
+  },
   "permissions": [
     "activeTab",
     "https://ajax.googleapis.com/",
